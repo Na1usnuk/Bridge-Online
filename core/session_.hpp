@@ -89,7 +89,7 @@ class Session
 				}
 				case 6:
 				{
-					if(card.suit_bin() == top.suit_bin() || card.num() == 11)
+					if(card.suit_bin() == top.suit_bin() or card.num() == 11)
 					{
 						m_heap.push(card);
 						return true;
@@ -97,7 +97,7 @@ class Session
 					return false;
 				}
 				default:
-					if(card.suit_bin() == top.suit_bin() || card.num() == top.num() || card.num() == 11)
+					if(card.suit_bin() == top.suit_bin() or card.num() == top.num() or card.num() == 11)
 						return true;
 			}
 			return false;

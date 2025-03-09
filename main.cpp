@@ -1,7 +1,10 @@
-#include "core/core.hpp"
+#include "web/servercpp/server.hpp"
+
 
 
 int main()
 {
+	ServerMain();
+
 	
 }

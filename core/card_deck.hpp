@@ -70,7 +70,7 @@ std::ostream& operator<<(std::ostream& os, const Card& c)
 
 bool operator==(const Card& lhs, const Card& rhs)
 {
-	return (lhs.num() == rhs.num() and lhs.suit_bin() == rhs.suit_bin());
+	return (lhs.num() == rhs.num() && lhs.suit_bin() == rhs.suit_bin());
 }
 
 template <unsigned char N>
@@ -142,10 +142,10 @@ class CardDeck
 		{
 			if(empty()) m_size = m_capacity;
 			static std::default_random_engine re;
-			std::uniform_int_distribution<size_t> uid;
-			using param_t = std::uniform_int_distribution<size_t>::param_type;
+			std::uniform_int_distribution<int> uid;
+			using param_t = std::uniform_int_distribution<int>::param_type;
 
-			for(size_t i = m_size - 1; i > 0; i--)
+			for(int i = m_size - 1; i > 0; i--)
 				m_deck[i].swap(m_deck[uid(re, param_t(0, i))]);
 		}
 
