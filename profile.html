@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профіль</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <button id="back-button" class="button game-header__back-button">
+        <img src="assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
+    </button>
+    <h1 class="header__title">Профіль</h1>
+    <div class="header__profile">
+        <button id="profile-button" class="button button--icon">
+            <img src="assets/icons/profile.svg" alt="Профіль" class="button__icon">
+        </button>
+    </div>
+</header>
+    <main class="main">
+        <div class="profile">
+            <h2 class="profile__title">Ім'я гравця</h2>
+            <p class="profile__email">email@example.com</p>
+            <div class="profile__stats">
+                <p>Перемоги: 100</p>
+                <p>Поразки: 50</p>
+            </div>
+            <div class="profile__skins">
+                <h3 class="profile__skins-title">Вигляди карт</h3>
+                <div class="profile__skins-list">
+                    <img src="assets/images/card-skin-1.jpg" alt="Вигляд карт 1" class="profile__skin-image">
+                    <img src="assets/images/card-skin-2.jpg" alt="Вигляд карт 2" class="profile__skin-image">
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

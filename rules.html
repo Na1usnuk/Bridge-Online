@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правила гри</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <button id="back-button" class="button game-header__back-button">
+        <img src="assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
+    </button>
+    <h1 class="header__title">Правила гри</h1>
+    <div class="header__profile">
+        <button id="profile-button" class="button button--icon">
+            <img src="assets/icons/profile.svg" alt="Профіль" class="button__icon">
+        </button>
+    </div>
+</header>
+    <main class="main">
+        <div class="rules">
+            <h2 class="rules__title">Правила гри Bridge</h2>
+            <p>Bridge - це карткова гра для чотирьох гравців, які грають парами. Мета гри - взяти якомога більше взяток.</p>
+            <h3>Основні поняття:</h3>
+            <ul>
+                <li>Взятка: чотири карти, по одній від кожного гравця.</li>
+                <li>Масті: піки, черви, бубни, трефи.</li>
+                <li>Козирі: масть, яка має найвищу силу в поточному розіграші.</li>
+            </ul>
+            <h3>Хід гри:</h3>
+            <ol>
+                <li>Торги: гравці роблять ставки, щоб визначити контракт (кількість взяток та козирі).</li>
+                <li>Розіграш: гравець, який виграв торги, починає розіграш, викладаючи карту.</li>
+                <li>Інші гравці викладають карти у відповідь, дотримуючись масті, якщо можливо.</li>
+                <li>Гравець, який виклав найсильнішу карту, бере взятку.</li>
+                <li>Розіграш триває до тих пір, поки всі карти не будуть розіграні.</li>
+            </ol>
+            <h3>Підрахунок очок:</h3>
+            <p>Пара, яка виконала контракт, отримує очки. Якщо контракт не виконано, очки отримує протилежна пара.</p>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гра</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <button id="back-button" class="button game-header__back-button">
+            <img src="assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
+        </button>
+        <h1 class="header__title">Гра</h1>
+        <div class="header__profile">
+            <button id="profile-button" class="button button--icon">
+                <img src="assets/icons/profile.svg" alt="Профіль" class="button__icon">
+            </button>
+        </div>
+    </header>
+    <main class="main game-main">
+        <div class="game-container">
+            <div class="game-info">
+                <div class="game-player">Ваш рахунок: 100</div>
+                <div class="game-code">Код гри: 12345</div>
+            </div>
+
+            <div class="game-field">
+                <div class="game-opponent game-opponent-left">
+                    <div class="game-opponent-name">Гравець 2: 80</div>
+                    <div class="game-opponent-cards">
+                        <div class="game-card flipped"></div>
+                        <div class="game-card flipped"></div>
+                    </div>
+                </div>
+            
+                <div class="game-opponent game-opponent-top">
+                    <div class="game-opponent-name">Гравець 3: 120</div>
+                    <div class="game-opponent-cards">
+                        <div class="game-card flipped"></div>
+                        <div class="game-card flipped"></div>
+                    </div>
+                </div>
+            
+                <div class="game-center">
+                        <div class="card" data-suit="heart" data-value="8"></div>
+                </div>
+            
+                <div class="game-opponent game-opponent-right">
+                    <div class="game-opponent-name">Гравець 4: 90</div>
+                    <div class="game-opponent-cards">
+                        <div class="game-card flipped"></div>
+                        <div class="game-card flipped"></div>
+                    </div>
+                </div>
+            
+                <div class="game-deck">
+                    <div class="game-card flipped"></div>
+                </div>
+            </div>
+            
+            <div class="game-player-cards">
+                <div class="card" data-suit="heart" data-value="A"></div>
+  <div class="card" data-suit="club" data-value="2"></div>
+  <div class="card" data-suit="heart" data-value="K"></div>
+  <div class="card" data-suit="spade" data-value="9"></div>
+  <div class="card" data-suit="club" data-value="J"></div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
