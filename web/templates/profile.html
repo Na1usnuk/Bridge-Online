@@ -1,40 +1,68 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Профіль</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Press+Start+2P&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styleguide.css">
+  <link rel="stylesheet" href="profile.css">
+  <title>Профіль</title>
 </head>
+
 <body>
-  <header class="header">
-    <button id="back-button" class="button game-header__back-button">
-        <img src="assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
+  <header class="login-header">
+    <button id="back-button" class="back-button">
+      <img src="assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
     </button>
-    <h1 class="header__title">Профіль</h1>
-    <div class="header__profile">
-        <button id="profile-button" class="button button--icon">
-            <img src="assets/icons/profile.svg" alt="Профіль" class="button__icon">
-        </button>
-    </div>
-</header>
-    <main class="main">
-        <div class="profile">
-            <h2 class="profile__title">Ім'я гравця</h2>
-            <p class="profile__email">email@example.com</p>
-            <div class="profile__stats">
-                <p>Перемоги: 100</p>
-                <p>Поразки: 50</p>
-            </div>
-            <div class="profile__skins">
-                <h3 class="profile__skins-title">Вигляди карт</h3>
-                <div class="profile__skins-list">
-                    <img src="assets/images/card-skin-1.jpg" alt="Вигляд карт 1" class="profile__skin-image">
-                    <img src="assets/images/card-skin-2.jpg" alt="Вигляд карт 2" class="profile__skin-image">
-                </div>
-            </div>
+  </header>
+    <div class="profile-page">
+      <div class="div">
+  
+        <!-- Кнопка "Налаштування" -->
+        
+  
+        <!-- Аватар -->
+         <div class="account-wrapper">
+        <div class="profile-picture"></div>
+  
+        <!-- Інформація про користувача -->
+        <div class="user-info">
+          <h1 class="username">Юзернейм</h1>
+          <br>
+          <p class="account-age">Вік аккаунту: 10 діб.</p>
         </div>
-    </main>
-    <script src="script.js"></script>
-</body>
+        <button class="settings-button">Налаштування</button>
+
+      </div>
+        <div class="bottom-wrapper">
+        <!-- Статистика -->
+        <div class="stats">
+          <h2 class="stats-title">СТАТИСТИКА</h2>
+          <div class="stat-item">
+            <p class="stat-label">Кількість перемог</p>
+            <p class="stat-value">3</p>
+          </div>
+          <div class="stat-item">
+            <p class="stat-label">Кількість ігор</p>
+            <p class="stat-value">33</p>
+          </div>
+        </div>
+  
+        <!-- Скін -->
+        <div class="skin">
+          <div class="skin-select"></div>
+          <p class="skin-label">Скін</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </body>
+
 </html>
