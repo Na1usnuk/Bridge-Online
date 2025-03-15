@@ -1,0 +1,175 @@
+.profile-page {
+  background-color: #2e4a3d; /* Темно-зелений фон */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  font-family: "Press Start 2P", cursive; /* Піксельний шрифт */
+  color: #f5f1e3; /* Світлий текст */
+}
+
+.profile-page .div {
+  background-color: var(--primary-1);
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Кнопка "Налаштування" */
+.profile-page .settings-button {
+  width: 30%;
+  min-width: 30%;
+  height: 10%;
+  padding: 20px 30px;
+  background-color: #7B1937;
+  color: #F5F1E3;
+  border: none;
+  border-radius: 30px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.profile-page .settings-button:hover {
+  background-color: #a52a4a; /* Темніший відтінок для hover */
+}
+
+.account-wrapper {
+  display: flex;
+}
+/* Аватар */
+.profile-page .profile-picture {
+  width: 250px;
+  height: 250px;
+  background-color: #f5f1e3; /* Бежевий */
+  border-radius: 50%;
+  margin: auto auto;
+}
+
+/* Інформація про користувача */
+.profile-page .user-info {
+  margin: auto auto;
+}
+
+.profile-page .username {
+  font-size: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.profile-page .account-age {
+  font-size: 1rem;
+}
+
+.bottom-wrapper {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: end;
+  margin: 4rem 10px;
+}
+/* Статистика */
+.profile-page .stats {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 70%;
+}
+
+.profile-page .stats-title {
+  font-size: 1.5rem;
+  margin: 2rem 0;
+}
+
+.profile-page .stat-item {
+  display: flex;
+}
+
+.profile-page .stat-label {
+  font-size: 1.2rem;
+  display: flex;
+}
+
+.profile-page .stat-value {
+  font-size: 1.2rem;
+  margin-left: 3rem;
+}
+
+/* Скін */
+.profile-page .skin {
+  width: 100%;
+  max-width: 40%;
+  text-align: center;
+}
+
+.profile-page .skin-select {
+  height: 100%;
+  max-height: 100%;
+  max-width: 40%;
+  background-color: #F5F1E3;
+  margin: 0 auto;
+}
+
+.profile-page .skin-label {
+  font-size: 2rem;
+  padding: 10px 0;
+  background-color: #ada06d;
+  color: #000;
+  max-width: 40%;
+  min-width: 30%;
+  margin: 0 auto;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  .profile-page .username {
+    font-size: 1.2rem;
+  }
+
+  .profile-page .account-age {
+    font-size: 0.9rem;
+  }
+
+  .profile-page .stats-title {
+    font-size: 1.2rem;
+  }
+
+  .profile-page .stat-label {
+    font-size: 0.9rem;
+  }
+
+  .profile-page .stat-value {
+    font-size: 1rem;
+  }
+
+  .profile-page .skin-select {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-page .username {
+    font-size: 1rem;
+  }
+
+  .profile-page .account-age {
+    font-size: 0.8rem;
+  }
+
+  .profile-page .stats-title {
+    font-size: 1rem;
+  }
+
+  .profile-page .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .profile-page .stat-value {
+    font-size: 0.9rem;
+  }
+
+  .profile-page .skin-select {
+    height: 150px;
+  }
+}
