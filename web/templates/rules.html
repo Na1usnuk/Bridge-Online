@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Правила гри</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header">
-    <button id="back-button" class="button game-header__back-button">
-        <img src="assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
-    </button>
-    <h1 class="header__title">Правила гри</h1>
-    <div class="header__profile">
-        <button id="profile-button" class="button button--icon">
-            <img src="assets/icons/profile.svg" alt="Профіль" class="button__icon">
+    <header class="header-game">
+        <button id="back-button" class="back-button">
+          <a href="index.html">
+            <img src="assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
+          </a>
         </button>
-    </div>
-</header>
     <main class="main">
         <div class="rules">
             <h2 class="rules__title">Правила гри Bridge</h2>
