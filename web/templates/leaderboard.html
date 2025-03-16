@@ -1,48 +1,76 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Таблиця лідерів</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Press+Start+2P&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styleguide.css">
+  <link rel="stylesheet" href="leaderboard.css">
+  <title>Таблиця лідерів</title>
 </head>
 <body>
   <header class="header">
-    <button id="back-button" class="button game-header__back-button">
-        <img src="assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
+    <button id="back-button" class="back-button">
+      <img src="assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
     </button>
-    <h1 class="header__title">Таблиця лідерів</h1>
-    <div class="header__profile">
-        <button id="profile-button" class="button button--icon">
-            <img src="assets/icons/profile.svg" alt="Профіль" class="button__icon">
-        </button>
-    </div>
-</header>
-    <main class="main">
-        <div class="leaderboard">
-            <table class="leaderboard__table">
-                <thead>
-                    <tr>
-                        <th>Місце</th>
-                        <th>Ім'я</th>
-                        <th>Перемоги</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Гравець 1</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Гравець 2</td>
-                        <td>90</td>
-                    </tr>
-                </tbody>
-            </table>
+  </header>
+  <div class="leaderboard-page">
+    <div class="div">
+
+      <!-- Основна таблиця лідерів -->
+      <div class="leaderboard-frame">
+        <!-- Заголовок таблиці -->
+        <div class="leaderboard-header">
+          <h1 class="leaderboard-title">Таблиця лідерів</h1>
         </div>
-    </main>
-    <script src="script.js"></script>
+
+        <!-- Тіло таблиці -->
+        <div class="leaderboard-content">
+          <div class="leaderboard-row">
+            <div class="row-first">1</div>
+            <div class="row-space"></div>
+          </div>
+          <div class="leaderboard-row">
+            <div class="row-second">2</div>
+            <div class="row-space"></div>
+          </div>
+          <div class="leaderboard-row">
+            <div class="row-number">3</div>
+            <div class="row-space"></div>
+          </div>
+          <div class="leaderboard-row">
+            <div class="row-number">4</div>
+            <div class="row-space"></div>
+          </div>
+          <div class="leaderboard-row">
+            <div class="row-number">5</div>
+            <div class="row-space"></div>
+          </div>
+          <div class="leaderboard-row">
+            <div class="row-number">6</div>
+            <div class="row-space"></div>
+          </div>
+          <div class="leaderboard-row">
+            <div class="row-number">7</div>
+            <div class="row-space"></div>
+          </div>
+          <div class="leaderboard-row">
+            <div class="row-number">8</div>
+            <div class="row-space"></div>
+          </div>
+          <div class="leaderboard-row">
+            <div class="row-number">9</div>
+            <div class="row-space"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
