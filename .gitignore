@@ -6,3 +6,5 @@ Bridge Online.sln
 Bridge Online.vcxproj
 Bridge Online.vcxproj.filters
 Bridge Online.vcxproj.user
+core/.vs
+packages
