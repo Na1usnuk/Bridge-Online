@@ -1,0 +1,107 @@
+.signup-page {
+  background-color: #2e4a3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+}
+
+.signup-page .div {
+  background-color: var(--primary-1);
+  width: 100%;
+  max-width: 800px;
+  padding: 40px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.signup-page .overlap {
+  width: 60px;
+  height: 60px;
+  background-color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+}
+
+.signup-page .vector {
+  width: 30px;
+  height: 26px;
+}
+
+.signup-page .log-in-text {
+  font-family: var(--48pt-h1-heading-1-font-family);
+  font-weight: var(--48pt-h1-heading-1-font-weight);
+  color: var(--white);
+  font-size: 2rem;
+  margin: 20px 0 100px 0;
+}
+
+.signup-page .input-field {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 2px solid #d9d9d9;
+  background-color: transparent;
+  color: var(--white);
+  font-family: var(--24pt-h3-heading-3-font-family);
+  font-size: 1rem;
+  outline: none;
+  text-align: center;
+}
+
+.signup-page .input-field::placeholder {
+  color: #f5f1e380;
+}
+
+.signup-page .create-account {
+  width: 70%;
+  padding: 25px 0px;
+  margin: 50px 0;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--secondary-2);
+  color: var(--white);
+  font-family: var(--32pt-h2-heading-2-font-family);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-page .create-account:hover {
+  background-color: #a52a4a; /* Темніший відтінок для hover */
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  .signup-page .log-in-text {
+    font-size: 2rem;
+  }
+
+  .signup-page .input-field {
+    font-size: 0.9rem;
+  }
+
+  .signup-page .create-account {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-page .log-in-text {
+    font-size: 1.5rem;
+  }
+
+  .signup-page .input-field {
+    font-size: 0.8rem;
+  }
+
+  .signup-page .create-account {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
