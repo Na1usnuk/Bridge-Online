@@ -8,3 +8,5 @@ Bridge Online.vcxproj.filters
 Bridge Online.vcxproj.user
 core/.vs
 packages
+web/serverpy/.vs
+web/serverpy/Lib
