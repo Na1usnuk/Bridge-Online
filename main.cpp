@@ -62,8 +62,13 @@ std::pair<Session::card_t, bool> ConstructCard(const std::string & str)
 		s_num = 11;
 		break;
 	}
+	case '1':
+	{
+		s_num = 10;
+		break;
+	}
 	default:
-		s_num = str.back() - '0';
+		s_num = str.front() - '0';
 		break;
 	}
 	Session::card_t constructed(s_num, s_sym);
@@ -75,9 +80,9 @@ std::pair<Session::card_t, bool> ConstructCard(const std::string & str)
 
 void CLIError(std::string str)
 {
-	std::system("cls");
+	//std::system("cls");
 	std::cout << "\n\nError: " << str << std::endl;
-	std::system("pause");
+	//std::system("pause");
 	return;
 }
 
@@ -93,13 +98,13 @@ void CLIBridge()
 
 	print("Console Bridge game.");
 	print("Currently you can play only with yourself.\n\n\n");
-	std::system("pause");
+	//std::system("pause");
 
 	bool gameShouldEnd = false;
 
 	do
 	{
-		std::system("cls");
+		//std::system("cls");
 		auto currentTurn = s.CurrentTurn();
 
 		std::cout << "\t\tOn Heap: " << s.OnTopCard() << '\n';
@@ -109,7 +114,7 @@ void CLIBridge()
 			std::cout << c << ' ';
 		std::cout << std::endl;
 
-		std::cout << "\nInput card name (s - spade, c - club, d - diamond, h - heart)\n zero (0) to pick\n e for turn end\n\n Your input: ";
+		std::cout << "\nInput card name (s - pika, c - hresta, d - buben, h - cherva)\n zero (0) to pick\n e for turn end\n\n Your input: ";
 		std::string str;
 		std::cin >> str;
 
@@ -138,7 +143,10 @@ void CLIBridge()
 		s.Turn(res.first);
 
 
+		if (s.IsGameEnded())
+		{
 
+		}
 
 
 		//gameShouldEnd = true;
@@ -151,7 +159,7 @@ int main()
 {
 
 	
-	CLIBridge();
+	//CLIBridge();
 
 
 

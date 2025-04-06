@@ -41,9 +41,9 @@ public:
 	explicit Card(byte card_data_bits) : m_data(card_data_bits) { }
 
 	Card() : m_data(0) {}
-	Card(const Card&) = default;
+	Card(const Card&) noexcept = default;
 	Card(Card&&) noexcept = default;
-	Card& operator=(const Card&) = default;
+	Card& operator=(const Card&) noexcept = default;
 	~Card() = default;
 
 

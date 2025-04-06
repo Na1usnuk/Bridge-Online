@@ -10,49 +10,49 @@
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Press+Start+2P&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="../static/styles/styles.css">
-  <link rel="stylesheet" href="../static/styles/styleguide.css">
-  <link rel="stylesheet" href="../static/styles/signup.css">
+  <link rel="stylesheet" href="../../../static/styles/styles.css">
+  <link rel="stylesheet" href="../../../static/styles/styleguide.css">
+  <link rel="stylesheet" href="../../../static/styles/signup.css">
   <title>Реєстрація</title>
 </head>
 
 <body>
   <header class="login-header">
-    <button id="back-button" class="back-button">
-      <img src="../static/assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
-    </button>
+    <a id="back-button" class="back-button" href="/">
+      <img src="../../../static/assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
+    </a>
   </header>
   <div class="signup-page">
-      <div class="div">
+    <div class="div">
 
-          <!-- Заголовок -->
-          <div class="log-in-text">Створення аккаунту</div>
+      <!-- Заголовок -->
+      <div class="log-in-text">Створення аккаунту</div>
+      <form method="post" action="{%url "registration"%}">
 
-          <!-- Поле для електронної адреси -->
-          <!--<div class="email-textbox">
-      <input type="email" class="input-field" placeholder="Електронна адреса">
-    </div>-->
+          {%csrf_token%}
 
           <!-- Поле для імені користувача -->
           <div class="username-textbox">
-              <input type="text" class="input-field" placeholder="Ім’я користувача">
+              <input name="username" type="text" class="input-field" placeholder="Ім’я користувача">
           </div>
 
           <!-- Поле для пароля -->
           <div class="password-textbox">
-              <input type="password" class="input-field" placeholder="Пароль">
+              <input name="password1" type="password" class="input-field" placeholder="Пароль">
           </div>
 
           <!-- Поле для повторення пароля -->
           <div class="repeat-password-textbox">
-              <input type="password" class="input-field" placeholder="Повторіть пароль">
+              <input name="password2" type="password" class="input-field" placeholder="Повторіть пароль">
           </div>
 
+
           <!-- Кнопка "Створити аккаунт" -->
-          <button class="create-account">
+          <button class="create-account" type="submit">
               <div class="text-wrapper">Створити аккаунт</div>
           </button>
-      </div>
+      </form>
+    </div>
   </div>
 </body>
 

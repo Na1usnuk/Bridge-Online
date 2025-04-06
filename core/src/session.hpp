@@ -1,7 +1,7 @@
 #pragma once
 
 #include <stdint.h>
-#include <unordered_map>
+#include <unordered_set>
 #include <vector>
 #include <memory>
 #include <utility>
@@ -49,7 +49,12 @@ public:
 
 	void StartGame() { m_game->Start(m_plist.size()); }
 
-	card_t OnTopCard() { return m_game->HeapTopCard(); }
+	card_t OnTopCard() 
+	{ 
+		if(!m_currentTurn.size())
+			return m_game->HeapTopCard(); 
+		return m_currentTurn.back();
+	}
 
 	player_t CurrentTurn() { return m_plist[m_game->CurrentTurn()]; }
 
@@ -60,12 +65,23 @@ public:
 			if (m_plist[i] == player)
 				id = i;
 
+		
+
 		auto c = m_game->GetPlayerCards(id);
+
 		if(m_currentTurn.size())
-			for (int i = 0; i < c.size(); ++i)
-				for (int ii = 0; ii < m_currentTurn.size(); ++ii)
-					if (c[i] == m_currentTurn[ii])
-						c.erase(c.begin() + i);
+		{
+			
+			cardcontainer_t tmp;
+			tmp.reserve(c.size());
+			for (card_t card : c)
+				if (std::find(m_currentTurn.begin(), m_currentTurn.end(), card) == m_currentTurn.end())
+					tmp.push_back(card);
+
+			using std::swap;
+			swap(tmp, c);
+		}
+
 		return c;
 	}
 
@@ -80,6 +96,14 @@ public:
 			m_game->SetCardTakenFlag();
 		}
 		return true;
+	}
+
+	bool IsGameEnded()
+	{
+		for (const auto& p : ListOfPlayers())
+			if (GetPlayerCards(p).size() == 0)
+				return true;
+		return false;
 	}
 
 

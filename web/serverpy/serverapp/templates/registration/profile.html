@@ -10,17 +10,17 @@
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Press+Start+2P&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="../static/styles/styles.css">
-  <link rel="stylesheet" href="../static/styles/styleguide.css">
-  <link rel="stylesheet" href="../static/styles/profile.css">
+  <link rel="stylesheet" href="../../../static/styles/styles.css">
+  <link rel="stylesheet" href="../../../static/styles/styleguide.css">
+  <link rel="stylesheet" href="../../../static/styles/profile.css">
   <title>Профіль</title>
 </head>
 
 <body>
   <header class="login-header">
-    <button id="back-button" class="back-button">
-      <img src="../static/assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
-    </button>
+    <a href="/" id="back-button" class="back-button">
+      <img src="../../../static/assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
+    </a>
   </header>
     <div class="profile-page">
       <div class="div">
@@ -34,9 +34,9 @@
   
         <!-- Інформація про користувача -->
         <div class="user-info">
-          <h1 class="username">Юзернейм</h1>
+          <h1 class="username">{{username}}</h1>
           <br>
-          <p class="account-age">Вік аккаунту: 10 діб.</p>
+          <p class="account-age">Вік аккаунту: {{date_joined}}.</p>
         </div>
         <button class="settings-button">Налаштування</button>
 
@@ -47,11 +47,11 @@
           <h2 class="stats-title">СТАТИСТИКА</h2>
           <div class="stat-item">
             <p class="stat-label">Кількість перемог</p>
-            <p class="stat-value">3</p>
+            <p class="stat-value">{{wins_num}}</p>
           </div>
           <div class="stat-item">
             <p class="stat-label">Кількість ігор</p>
-            <p class="stat-value">33</p>
+            <p class="stat-value">{{games_num}}</p>
           </div>
         </div>
   
