@@ -57,7 +57,7 @@ class Bridge
 
 		virtual bool CanPlayerTakeCard() = 0;
 
-		virtual constexpr unum_t DeckCapacity() noexcept = 0;
+		virtual unum_t DeckCapacity() noexcept = 0;
 
 		void SetCardTakenFlag()
 		{
@@ -122,7 +122,7 @@ public:
 
 	void DeckInit() noexcept override;
 
-	constexpr unum_t DeckCapacity() noexcept override { return 36; }
+	unum_t DeckCapacity() noexcept override { return 36; }
 
 	bool HandleTurn(const cardcontainer_t&) override;
 

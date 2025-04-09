@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-#include <string_view>
 
 
 class Player
@@ -9,12 +8,13 @@ class Player
 
 	using str = std::string;
 	using cstr = const str;
-	using strv = std::string_view;
+	using cstrr = const std::string&;
+	//using strv = std::string_view;
 	using points_t = int;
 
 public:
 
-	Player(strv nick, points_t points = 0) : m_nick(nick), m_points(points) { }
+	Player(cstrr nick, points_t points = 0) : m_nick(nick), m_points(points) { }
 
 	cstr nick() const noexcept { return m_nick; }
 	points_t points() const noexcept { return m_points; }

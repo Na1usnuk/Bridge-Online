@@ -16,63 +16,62 @@
 </head>
 
 <body>
-  <div class="game-container">
-    <header class="header-game">
-      <button id="back-button" class="back-button">
-        <a href="index.html">
-          <img src="../static/assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
-        </a>
-      </button>
-      <!-- Рейтинг -->
-      <div class="rating">
-        <h2 class="rating-title">Рейтинг</h2>
-        <div class="rating-content">
-          <p>Нікнейм1&nbsp;&nbsp;&nbsp;&nbsp;9</p>
-          <p>Нікнейм2&nbsp;&nbsp;&nbsp;&nbsp;2</p>
-          <p>Нікнейм3&nbsp;&nbsp;&nbsp;&nbsp;1</p>
+    <div class="game-container">
+        <header class="header-game">
+            <button id="back-button" class="back-button">
+                <a href="/">
+                    <img src="../static/assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
+                </a>
+            </button>
+            <!-- Рейтинг -->
+            <div class="rating">
+                <h2 class="rating-title">Рейтинг</h2>
+                <div class="rating-content">
+                    <p>{{player1}}&nbsp;&nbsp;&nbsp;&nbsp;{{points1}}</p>
+                    <p>{{player2}}&nbsp;&nbsp;&nbsp;&nbsp;{{points2}}</p>
+                    <p>{{player3}}&nbsp;&nbsp;&nbsp;&nbsp;{{points3}}</p>
+                </div>
+            </div>
+        </header>
+        <div class="top-player">
+            <div class="player-card">{{top}}</div>
         </div>
-      </div>
-    </header>
-    <div class="top-player">
-      <div class="player-card">3</div>
-    </div>
-    <div class="game-wrapper">
-      <!-- Лівий гравець -->
-      <div class="left-player">
-        <div class="player-card">3</div>
-      </div>
+        <div class="game-wrapper">
+            <!-- Лівий гравець -->
+            <div class="left-player">
+                <div class="player-card">{{left}}</div>
+            </div>
 
-      <!-- Ігрове поле -->
-      <div class="game-field">
-        <!-- Основний ігровий стіл -->
-        <div class="main-game-area">
-          <!-- Центральна частина -->
-          <div class="center-area">
-            <div class="deck">
-              <div class="vertical-section"></div>
-            </div>
-            <div class="thrown-cards">
-              <div class="vertical-section"></div>
-            </div>
-            <div>
-            </div>
-          </div>
+            <!-- Ігрове поле -->
+            <div class="game-field">
+                <!-- Основний ігровий стіл -->
+                <div class="main-game-area">
+                    <!-- Центральна частина -->
+                    <div class="center-area">
+                        <div class="deck">
+                            <button onclick="DeckClick();" style="font-size: 1rem; cursor: cell; font-family: inherit;" class="vertical-section">Колода</button>
+                        </div>
+                        <div class="horizontal-row" style="margin-left: 40px" id="heap">
 
+                            <button id="heap_card" class="rectangle" style="font-size: 3rem; font-family: inherit;"></button>
+
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="horizontal-row" id="player_cards">
+
+                </div>
+            </div>
+            <!-- Правий гравець -->
+            <div class="right-player">
+                <div class="player-card">{{right}}</div>
+            </div>
         </div>
-        <div class="horizontal-row">
-          <div class="rectangle"></div>
-          <div class="rectangle"></div>
-          <div class="rectangle"></div>
-          <div class="rectangle"></div>
-          <div class="rectangle"></div>
-        </div>
-      </div>
-      <!-- Правий гравець -->
-      <div class="right-player">
-        <div class="player-card">3</div>
-      </div>
     </div>
-  </div>
+    <script src="../../static/scripts/game.js"></script>
 </body>
 
 </html>

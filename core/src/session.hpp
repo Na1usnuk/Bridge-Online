@@ -29,7 +29,7 @@ public:
 
 	void AddPlayer(const std::string& nick) { m_plist.emplace_back(nick); }
 
-	const plist_t& ListOfPlayers() const { return m_plist; }
+	plist_t ListOfPlayers() const { return m_plist; }
 
 	void Turn(card_t card) 
 	{ 

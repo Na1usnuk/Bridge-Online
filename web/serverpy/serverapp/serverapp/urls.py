@@ -16,14 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import RegistrationView, ProfileView
+from .views import RegistrationView, ProfileView, HomePageView
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),
     #path('blog/', include('bridgeblog.urls')),
-
+    path(r'', HomePageView.as_view(), name='home'),    
     path(r'accounts/', include('django.contrib.auth.urls')),
     path(r'accounts/registration/', RegistrationView, name='registration'),
     path(r'accounts/profile/', ProfileView, name='profile'),
-    path(r'', include('bridgeapp.urls')),  
+
+    path(r'game/', include('bridgeapp.urls')),  
 ]

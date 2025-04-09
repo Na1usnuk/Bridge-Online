@@ -5,8 +5,13 @@ from django.contrib.auth import login
 from django import forms
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
 import datetime
 
+
+class HomePageView(TemplateView):
+    def get(self, request, **kwargs):
+        return render(request, 'index.html', context=None)
 
 class RegistrationForm(UserCreationForm):
 
@@ -21,7 +26,7 @@ def RegistrationView(req):
         if form.is_valid():
             user = form.save()
             login(req, user)
-            return HttpResponseRedirect('/account/profile')
+            return HttpResponseRedirect('/accounts/profile')
     else:
         form = RegistrationForm()
 
