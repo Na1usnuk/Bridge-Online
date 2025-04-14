@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bridge Game</title>
-    <link rel="stylesheet" href="..\static\styles\styles.css" />
+      {%load static%}
+    <link rel="stylesheet" href="{%static 'styles\styles.css'%}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,21 +16,20 @@
   <body class="index-body">
     <header class="header-profile">
         <div class="header__profile">
-            <a href="/accounts/profile" id="profile-button" class="button button--icon">
-                <img src="../../static\assets/icons/profile.svg" alt="Профіль" class="button__icon" />
+            <a href="{%url 'profile'%}" id="profile-button" class="button button--icon">
+                <img src="{%static 'assets/icons/profile.svg'%}" alt="Профіль" class="button__icon" />
             </a>
         </div>
     </header>
     <h1>Bridge online</h1>
     <main class="main">
       <div class="main__buttons">
-        <a href="/game" class="main__button">Грати</a>
-        <a href="guest.html" class="main__button">Грати як гість</a>
+        <a href="{%url 'game'%}" class="main__button">Грати</a>
         <a href="rules.html" class="main__button">Правила гри</a>
         <a href="leaderboard.html" class="main__button">Таблиця лідерів</a>
         <a href="shop.html" class="main__button">Магазин</a>
       </div>
     </main>
-    <script src="..\static\scripts\script.js"></script>
+    <script src="{%static 'scripts\script.js'%}"></script>
   </body>
 </html>

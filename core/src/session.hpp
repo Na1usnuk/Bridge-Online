@@ -21,13 +21,13 @@ public:
 
 public:
 
-	Session(gameptr_t game) : m_game(std::move(game)) { }
+	Session(gameptr_t game) : m_game(std::move(game)), m_is_game_started(false) { }
 
-	Session() : m_game(std::make_unique<ClassicalBridge>()) { }
+	Session() : Session(std::make_unique<ClassicalBridge>()) { }
 
 	virtual ~Session() = default;
 
-	void AddPlayer(const std::string& nick) { m_plist.emplace_back(nick); }
+	void AddPlayer(const std::string& nick) {  m_plist.emplace_back(nick); }
 
 	plist_t ListOfPlayers() const { return m_plist; }
 
@@ -47,7 +47,7 @@ public:
 		return false;
 	}
 
-	void StartGame() { m_game->Start(m_plist.size()); }
+	void StartGame() { if (!m_is_game_started) { m_currentTurn.push_back(m_game->Start(m_plist.size())); m_is_game_started = true; } }
 
 	card_t OnTopCard() 
 	{ 
@@ -58,20 +58,16 @@ public:
 
 	player_t CurrentTurn() { return m_plist[m_game->CurrentTurn()]; }
 
-	cardcontainer_t GetPlayerCards(player_t player)
+	cardcontainer_t GetPlayerCards(const std::string& player)
 	{
 		int id;
 		for (int i = 0; i < m_plist.size(); i++)
-			if (m_plist[i] == player)
+			if (m_plist[i].nick() == player)
 				id = i;
-
-		
-
 		auto c = m_game->GetPlayerCards(id);
 
 		if(m_currentTurn.size())
 		{
-			
 			cardcontainer_t tmp;
 			tmp.reserve(c.size());
 			for (card_t card : c)
@@ -98,11 +94,27 @@ public:
 		return true;
 	}
 
+	bool IsGameStarted() const { return m_is_game_started; }
+
+	int PlayersCount() const { return m_plist.size(); }
+
+	int PlayerCardsCount(const std::string& nick) 
+	{ 
+		if(m_is_game_started)
+			return GetPlayerCards(nick).size();
+		return 0;
+	}
+
+	bool IsPlayerPlaying(const std::string& str) const 
+	{ 
+		for (auto p : m_plist)
+			if (p.nick() == str)
+				return true;
+		return false;
+	}
+
 	bool IsGameEnded()
 	{
-		for (const auto& p : ListOfPlayers())
-			if (GetPlayerCards(p).size() == 0)
-				return true;
 		return false;
 	}
 
@@ -112,6 +124,7 @@ private:
 	cardcontainer_t m_currentTurn;
 	gameptr_t m_game;
 	plist_t m_plist;
+	bool m_is_game_started;
 
 };
 

@@ -110,7 +110,7 @@ void CLIBridge()
 		std::cout << "\t\tOn Heap: " << s.OnTopCard() << '\n';
 		std::cout << "\n\n\nPlayer: " << currentTurn.nick() << "\n\nCards: ";
 
-		for (const auto& c : s.GetPlayerCards(currentTurn))
+		for (const auto& c : s.GetPlayerCards(currentTurn.nick()))
 			std::cout << c << ' ';
 		std::cout << std::endl;
 
@@ -158,8 +158,7 @@ void CLIBridge()
 int main()
 {
 
-	
-	//CLIBridge();
+	CLIBridge();
 
 
 

@@ -9,37 +9,43 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Press+Start+2P&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="../static/styles/styles.css">
-  <link rel="stylesheet" href="../static/styles/styleguide.css">
-  <link rel="stylesheet" href="../static/styles/game.css">
+    {%load static%}
+  <link rel="stylesheet" href="{% static 'styles/styles.css'%}">
+  <link rel="stylesheet" href="{% static 'styles/styleguide.css'%}">
+  <link rel="stylesheet" href="{% static 'styles/game.css'%}">
+    {%csrf_token%}
   <title>Гра</title>
 </head>
 
 <body>
+    <script>let GAME_STARTED = {{isGameStarted}}</script>
     <div class="game-container">
         <header class="header-game">
             <button id="back-button" class="back-button">
-                <a href="/">
-                    <img src="../static/assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
+                <a href="{%url 'home'%}">
+                    <img src="{% static 'assets/icons/arrow-left.svg'%}" alt="Назад" class="button__icon">
                 </a>
             </button>
             <!-- Рейтинг -->
             <div class="rating">
                 <h2 class="rating-title">Рейтинг</h2>
-                <div class="rating-content">
-                    <p>{{player1}}&nbsp;&nbsp;&nbsp;&nbsp;{{points1}}</p>
-                    <p>{{player2}}&nbsp;&nbsp;&nbsp;&nbsp;{{points2}}</p>
-                    <p>{{player3}}&nbsp;&nbsp;&nbsp;&nbsp;{{points3}}</p>
+                <div id="rating" class="rating-content">
+                    {%for player, points in players%}
+                    <p>{{player}}&nbsp;&nbsp;&nbsp;&nbsp;{{points}}</p>
+                    {%endfor%}
                 </div>
             </div>
         </header>
+        <!-- Центральний гравець -->
+        
         <div class="top-player">
-            <div class="player-card">{{top}}</div>
+            <div id="top" class="player-card">{{top}}</div>
         </div>
+        
         <div class="game-wrapper">
             <!-- Лівий гравець -->
             <div class="left-player">
-                <div class="player-card">{{left}}</div>
+                <div id="left" class="player-card">{{left}}</div>
             </div>
 
             <!-- Ігрове поле -->
@@ -51,9 +57,11 @@
                         <div class="deck">
                             <button onclick="DeckClick();" style="font-size: 1rem; cursor: cell; font-family: inherit;" class="vertical-section">Колода</button>
                         </div>
+
+                        <!-- Карти на столі -->
                         <div class="horizontal-row" style="margin-left: 40px" id="heap">
 
-                            <button id="heap_card" class="rectangle" style="font-size: 3rem; font-family: inherit;"></button>
+                            <button onclick="HeapClick();" id="heap_card" class="rectangle" style="font-size: 3rem; font-family: inherit;">{{heap_card}}</button>
 
                         </div>
                         <div>
@@ -61,17 +69,18 @@
                     </div>
 
                 </div>
+                <!-- Карти гравця -->
                 <div class="horizontal-row" id="player_cards">
 
                 </div>
             </div>
             <!-- Правий гравець -->
             <div class="right-player">
-                <div class="player-card">{{right}}</div>
+                <div id="right" class="player-card">{{right}}</div>
             </div>
         </div>
     </div>
-    <script src="../../static/scripts/game.js"></script>
+    <script src="{%static 'scripts/game.js'%}"></script>
 </body>
 
 </html>

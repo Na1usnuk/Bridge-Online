@@ -22,9 +22,11 @@ BOOST_PYTHON_MODULE(BridgeGame)
 		.def("addPoints", &Player::addPoints)
 		;
 
-	class_<Card>("Card", init<int, int>())
+	class_<Card>("Card", init<std::string>())
 		.def("num", &Card::num)
 		.def("suit", &Card::suit)
+		.def("raw", &Card::raw)
+		.def("repr", &Card::repr)
 		;
 
 	class_<Session, boost::noncopyable>("BridgeSession")
@@ -37,5 +39,9 @@ BOOST_PYTHON_MODULE(BridgeGame)
 		.def("PlayerPickCard", &Session::PlayerPickCard)
 		.def("EndTurn", &Session::EndTurn)
 		.def("Turn", &Session::Turn)
+		.def("IsGameStarted", &Session::IsGameStarted)
+		.def("PlayersCount", &Session::PlayersCount)
+		.def("IsPlayerPlaying", &Session::IsPlayerPlaying)
+		.def("PlayerCardsCount", &Session::PlayerCardsCount)
 		;
 }

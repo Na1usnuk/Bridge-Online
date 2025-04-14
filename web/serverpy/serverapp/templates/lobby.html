@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Вибір Лобі</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #234336; /* темно-зелений */
+      font-family: 'Press Start 2P', monospace;
+      color: #fffbea;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding-top: 50px;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 90%;
+      max-width: 800px;
+      border-collapse: collapse;
+      background-color: #234336;
+      color: #fffbea;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #fffbea;
+    }
+
+    th {
+      color: #fffbea;
+      font-weight: normal;
+    }
+
+    .status-started {
+      color: #66ff66;
+    }
+
+    .status-waiting {
+      color: #aaa;
+    }
+
+    .button {
+      background-color: #7e1e40;
+      color: #fffbea;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 20px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 12px;
+      margin-top: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #9a2d55;
+    }
+
+    table a {
+        text-decoration: none;
+        color: inherit;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+
+    table a:hover {
+        color: #fffbea;
+        text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Список Лобі</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Назва Лобі</th>
+        <th>Гравці</th>
+        <th>Статус</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for name, lobby in lobbies.items %}
+        <tr>
+            <td><a href="/game/{{name}}" >{{ name }}</a></td>
+            <td>{{ lobby.pcount }}/4</td>
+            <td>
+                {% if lobby.isStarted %}
+                <span class="status-started">Гра почалась</span>
+                {% else %}
+                <span class="status-waiting">Очікування</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+  <button onclick="CreateLobby();" class="button">Створити нове лобі</button>
+    <script>
+        function CreateLobby() {
+            let name = prompt("Введіть назву нового лоббі: ");
+            if (name) 
+                window.location.replace("/game/" + name);
+        }
+
+    </script>
+</body>
+</html>
