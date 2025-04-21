@@ -3,20 +3,17 @@ function ShowError(str) {
 }
 
 function CriticalError(str) {
-    confirm(str)
-    widow.location.replace("/");
-
+    console.log("CriticalError Function");
+    ShowError(str);
+    window.location.replace("/");
 }
 
 let IS_MY_TURN = false;
 const csrf_token = document.getElementsByName("csrfmiddlewaretoken")[0].value;
 
+CheckChanges();
+window.setInterval(CheckChanges, 1000);
 
-window.setInterval(CheckChanges, 2000);
-
-function AddPlayer() {
-
-}
 
 function ResolveRawCard(card_data) {
     let num = card_data.substring(0, card_data.length - 1)
@@ -99,9 +96,6 @@ function DeckClick() {
     if (!GAME_STARTED) {
         StartGame();
     }
-    if (!IS_MY_TURN) {
-        ShowError("Not Your turn!")
-    }
     else {
         fetch(window.location, {
             method: "POST",
@@ -127,6 +121,7 @@ function DeckClick() {
 function CardClick(card) {
     if (!IS_MY_TURN) {
         ShowError("Not Your turn!")
+        return;
     }
     console.log("Card Clicked: " + card.target.name)
 
@@ -181,10 +176,7 @@ function SynchonizePlayers(data) {
 
 
 function CheckChanges() {
-    if (GAME_STARTED)
         GameCheck();
-    else
-        PreGameCheck();
 }
 
 function GameCheck() {

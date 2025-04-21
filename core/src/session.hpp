@@ -5,6 +5,7 @@
 #include <vector>
 #include <memory>
 #include <utility>
+#include <type_traits>
 #include "player.hpp"
 #include "rules.hpp"
 
@@ -21,7 +22,7 @@ public:
 
 public:
 
-	Session(gameptr_t game) : m_game(std::move(game)), m_is_game_started(false) { }
+	Session(gameptr_t game) : m_game(std::move(game)), m_is_game_started(false), m_num_of_turns(0) { }
 
 	Session() : Session(std::make_unique<ClassicalBridge>()) { }
 
@@ -38,16 +39,29 @@ public:
 
 	bool EndTurn()
 	{
+		m_num_of_turns++;
 		if (m_game->HandleTurn(m_currentTurn))
 		{
 			m_currentTurn.clear();
 			return true;
 		}
 		m_currentTurn.clear();
+		if (m_num_of_turns == 1)
+		{
+			Turn(m_game->GetPlayerCards().back());
+			m_num_of_turns--;
+		}
 		return false;
 	}
 
-	void StartGame() { if (!m_is_game_started) { m_currentTurn.push_back(m_game->Start(m_plist.size())); m_is_game_started = true; } }
+	void StartGame() 
+	{ 
+		if (!m_is_game_started) 
+		{ 
+			m_currentTurn.push_back(m_game->Start(m_plist.size())); 
+			m_is_game_started = true; 
+		} 
+	}
 
 	card_t OnTopCard() 
 	{ 
@@ -113,9 +127,32 @@ public:
 		return false;
 	}
 
+	void CalculateAllPoints()
+	{
+		for (int i = 0; i < m_plist.size(); ++i)
+		{
+			const auto& cards = m_game->GetPlayerCards(i);
+			if (!cards.size())
+				continue;
+
+			int points = 0;
+			for (auto c : cards)
+				points += m_game->CalculatePoints(c);
+
+			m_plist[i].addPoints(points);
+		}
+	}
+
 	bool IsGameEnded()
 	{
-		return false;
+		return m_game->IsGameEnded();
+	}
+
+	//Makes Session object "brand new"
+	void EndGame()
+	{
+		m_game->ClearAll();
+		m_currentTurn.clear();
 	}
 
 
@@ -125,6 +162,7 @@ private:
 	gameptr_t m_game;
 	plist_t m_plist;
 	bool m_is_game_started;
+	unsigned int m_num_of_turns;
 
 };
 

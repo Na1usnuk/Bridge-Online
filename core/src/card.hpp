@@ -238,7 +238,7 @@ std::ostream& operator<<(std::ostream& os, Card c)
 		break;
 	}
 	default:
-		assert(false);
+		s_sym = 0;
 	}
 
 	char s_num;

@@ -43,5 +43,7 @@ BOOST_PYTHON_MODULE(BridgeGame)
 		.def("PlayersCount", &Session::PlayersCount)
 		.def("IsPlayerPlaying", &Session::IsPlayerPlaying)
 		.def("PlayerCardsCount", &Session::PlayerCardsCount)
+		.def("IsGameEnded", &Session::IsGameEnded)
+		.def("EndGame", &Session::EndGame)
 		;
 }

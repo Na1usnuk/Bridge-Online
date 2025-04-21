@@ -44,40 +44,46 @@ def GameViewPost(req, lobbyName):
     if not lobbyName in sessions:
         return JsonResponse({'error': 'Lobby closed'})
 
+    lobby = sessions[lobbyName]
     action = req.headers['Action']
+    context = {}
 
     if action == 'StartGame':
-        sessions[lobbyName].StartGame()
-        return JsonResponse(PLayersGameContext(req, lobbyName) | GameContext(req, lobbyName))
+        lobby.StartGame()
+        context = PLayersGameContext(req, lobbyName) | GameContext(req, lobbyName)
 
     elif action == 'PreGameCheck':
-        return JsonResponse(PLayersGameContext(req, lobbyName))
+        context = PLayersGameContext(req, lobbyName)
 
     elif action == 'GameCheck':
-        return JsonResponse(PLayersGameContext(req, lobbyName) | GameContext(req, lobbyName))
+        context = PLayersGameContext(req, lobbyName) | GameContext(req, lobbyName)
+
+    #User turn area 
+
+    elif lobby.CurrentTurn().nick() != req.user.username:
+        context = {'error': 'Not Your turn!'}
 
     elif action == 'PlayerTurn':
-        if sessions[lobbyName].CurrentTurn().nick() != req.user.username:
-            return JsonResponse({'error': 'Not Your turn!'})
-        else:
-            sessions[lobbyName].Turn(Card(req.headers['Card']))
-            return JsonResponse(GameContext(req, lobbyName))
+        lobby.Turn(Card(req.headers['Card']))
+        context = GameContext(req, lobbyName)
 
     elif action == 'PlayerEndTurn':
-        if sessions[lobbyName].CurrentTurn().nick() != req.user.username:
-            return JsonResponse({'error': 'Not Your turn!'})
-        if not sessions[lobbyName].EndTurn():
-            return JsonResponse({'error': 'Invalid turn!'})
+        if not lobby.EndTurn():
+            context = {'error': 'Invalid turn!'}
         else:
-            return JsonResponse(GameContext(req, lobbyName))
+            if lobby.IsGameEnded():
+                lobby.CalculateAllPoints()
+                lobby.EndGame()
+                context = {'gameEnded': 'true'}
+            context = context | GameContext(req, lobbyName)
 
     elif action == 'PlayerPickCard':
-        if sessions[lobbyName].CurrentTurn().nick() != req.user.username:
-            return JsonResponse({'error': 'Not Your turn!'})
-        if not sessions[lobbyName].PlayerPickCard():
-            return JsonResponse({'error': 'You can`t pick card!'})
+        if not lobby.PlayerPickCard():
+            context = {'error': 'You can`t pick card!'}
         else:
-            return JsonResponse(GameContext(req, lobbyName))
+            context = GameContext(req, lobbyName)
+
+    return JsonResponse(context)
 
 
 def GameContext(req, lobbyName):

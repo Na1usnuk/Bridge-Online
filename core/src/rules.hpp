@@ -41,9 +41,11 @@ class Bridge
 
 		card_t HeapTopCard() 
 		{
-			if(m_hot.size() > 0)
+			if(m_hot.size())
 				return m_hot.back(); 
-			return m_heap.back();
+			if(m_heap.size())
+				return m_heap.back();
+			return card_t(0, 0);
 		}
 
 		card_t HotCard() { if (!IsHotCardsResponced()) return m_hot.back(); return card_t(); }
@@ -55,6 +57,11 @@ class Bridge
 			return m_plist[pid];
 		}
 
+		const cardcontainer_t& GetPlayerCards()
+		{
+			return GetPlayerCards(m_turn);
+		}
+
 		virtual bool CanPlayerTakeCard() = 0;
 
 		virtual unum_t DeckCapacity() noexcept = 0;
@@ -62,6 +69,27 @@ class Bridge
 		void SetCardTakenFlag()
 		{
 			m_cardTaken = true;
+		}
+
+		bool IsGameEnded() 
+		{
+			int currentlyPlaying = 0;
+			for (auto p : m_plist)
+				if (p.size())
+					++currentlyPlaying;
+			return currentlyPlaying == 1;
+		}
+
+		virtual unum_t CalculatePoints(const card_t&) noexcept;
+
+		void ClearAll()
+		{
+			m_plist.clear();
+			m_deck.clear();
+			m_heap.clear();
+			m_hot.clear();
+			m_turn = 0;
+			m_cardTaken = false;
 		}
 
 	protected:
@@ -79,9 +107,6 @@ class Bridge
 
 		virtual void ShuffleDeck() noexcept;
 
-		virtual unum_t CalculatePoints(const card_t&) noexcept;
-
-
 		int Turn()
 		{
 			return m_turn;
@@ -92,11 +117,13 @@ class Bridge
 			if (++m_turn == m_plist.size())
 				m_turn = 0;
 			m_cardTaken = false;
+			if (!GetPlayerCards().size() && !IsGameEnded())
+				IncrementTurn();
 		}
 
 		void IncrementTurn(num_t n)
 		{
-			while (n--)
+			while(--n)
 				IncrementTurn();
 		}
 
@@ -191,7 +218,7 @@ Bridge::card_t ClassicalBridge::Start(num_t num_of_players, num_t num_of_cards, 
 		p.reserve(10);
 	while (num_of_players--)
 		PlayerTakeCards(num_of_players, num_of_cards);
-	m_heap.push_back(m_plist[turn].back());
+	//m_heap.push_back(m_plist[turn].back());
 	return m_plist[turn].back();
 }
 
@@ -237,18 +264,31 @@ bool ClassicalBridge::HandleTurn(const cardcontainer_t& cards)
 		return true;
 	}
 
+	if ( (cards.back().num() == 6 || cards.back().num() == 9) && GetPlayerCards().size() != cards.size())
+		return false;
 	
 	bool needToChooseSuit = false;
 	card_t prev = HeapTopCard();
+	int i = 1;
+	if (!prev)
+	{
+		prev = cards[0];
+		++i;
+	}
 
-	for (int i = 0; i < cards.size(); i++)
+	if (cards.front().num() != prev.num() && cards.front().suit() != prev.suit() && cards.front().num() != Card::Valet && !prev)
+		return false;
+
+	prev = cards.front();
+
+	for (; i < cards.size(); i++)
 	{
 		std::cout << "Checking " << cards[i] << std::endl;
 		switch (cards[i].num())
 		{
 		case 14:
 		{
-			if (cards[i].suit() != prev.suit() && prev.num() != 14 && prev.num() != 9)
+			if (cards[i].num() != prev.num() || prev.num() != 6 && cards[i].suit() != prev.suit() || prev.num() != 9)
 				return false;
 
 			int inc = i;
@@ -278,7 +318,7 @@ bool ClassicalBridge::HandleTurn(const cardcontainer_t& cards)
 		
 		default:
 		{
-			if (cards[i].suit() != prev.suit() && prev.num() != cards[i].num() && prev.num() != 9)
+			if (cards[i].num() != prev.num() || prev.num() != 6 && cards[i].suit() != prev.suit() || prev.num() != 9)
 				return false;
 			break;
 		}

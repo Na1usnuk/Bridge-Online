@@ -21,11 +21,9 @@
     <script>let GAME_STARTED = {{isGameStarted}}</script>
     <div class="game-container">
         <header class="header-game">
-            <button id="back-button" class="back-button">
-                <a href="{%url 'home'%}">
+                <a href="{%url 'home'%}" id="back-button" class="back-button">
                     <img src="{% static 'assets/icons/arrow-left.svg'%}" alt="Назад" class="button__icon">
                 </a>
-            </button>
             <!-- Рейтинг -->
             <div class="rating">
                 <h2 class="rating-title">Рейтинг</h2>
