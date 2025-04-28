@@ -54,13 +54,19 @@ public:
 		return false;
 	}
 
-	void StartGame() 
+	void StartGame()
 	{ 
 		if (!m_is_game_started) 
 		{ 
+			m_num_of_turns = 0;
 			m_currentTurn.push_back(m_game->Start(m_plist.size())); 
 			m_is_game_started = true; 
 		} 
+	}
+
+	player_t Looser()
+	{
+		return m_plist[m_game->Looser()];
 	}
 
 	card_t OnTopCard() 
@@ -97,7 +103,7 @@ public:
 
 	bool PlayerPickCard()
 	{
-		if(m_currentTurn.back().num() == 6)
+		if(m_currentTurn.size() && m_currentTurn.back().num() == 6)
 		{
 			m_game->PlayerTakeCards(1);
 			return true;

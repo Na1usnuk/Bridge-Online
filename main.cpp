@@ -133,8 +133,10 @@ void CLIBridge()
 				CLIError("Invalid Turn");
 			else if(s.IsGameEnded())
 			{
-				s.EndGame();
+				//const auto p = s.Looser();
+				//std::cout << "\nLooser: " << p.nick() << '\n';
 				s.CalculateAllPoints();
+				s.EndGame();
 				std::cout << "\nGame End!\n\nContinue Playing? [y/n]:";
 				std::string inp;
 				std::cin >> inp;

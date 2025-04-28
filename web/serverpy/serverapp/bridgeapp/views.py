@@ -49,9 +49,6 @@ def GameViewPost(req, lobbyName):
     action = req.headers['Action']
     context = {}
 
-    if settings.DEBUG:
-        print('GAME_VIEW_POST')
-
     if action == 'StartGame':
         lobby.StartGame()
         context = PLayersGameContext(req, lobbyName) | GameContext(req, lobbyName)
@@ -75,9 +72,11 @@ def GameViewPost(req, lobbyName):
         if not lobby.EndTurn():
             context = {'error': 'Invalid turn!'}
         else:
+            print("GAME END")
             if lobby.IsGameEnded():
                 lobby.CalculateAllPoints()
                 lobby.EndGame()
+                lobby.StartGame()
                 context = {'gameEnded': 'true'}
             context = context | GameContext(req, lobbyName)
 
@@ -94,9 +93,6 @@ def GameContext(req, lobbyName):
     context = {}
     cards = []
 
-    if settings.DEBUG:
-        print('Game_Context')
-
     for c in sessions[lobbyName].GetPlayerCards(req.user.username):
         cards.append(c.repr())
     context['yourCards'] = cards
@@ -111,13 +107,11 @@ def PLayersGameContext(req, lobbyName):
     context = {}
     players = []
 
-    if settings.DEBUG:
-        print('Player_Game_Context')
-
     for p in sessions[lobbyName].ListOfPlayers():
         players.append((p.nick(), p.points()))
     context['players'] = players
-    n = players.index((req.user.username, 0))
+    usernames = [p[0] for p in players]
+    n = usernames.index(req.user.username)
     n = (n + 1) % len(players)
     if len(players) >= 2:
         context['top'] = sessions[lobbyName].PlayerCardsCount(players[n][0])

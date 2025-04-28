@@ -77,23 +77,25 @@ WSGI_APPLICATION = 'serverapp.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 #settings.py
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'bridgeonline',
-#        'USER': 'postgres',
-#        'PASSWORD': '9953588',
-#        'HOST': 'localhost',
-#        'PORT': '5432',
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'bridgeonline',
+        'USER': 'postgres',
+        'PASSWORD': '9953588',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'bridgeonline',
     }
 }
+'''
 
 
 # Password validation

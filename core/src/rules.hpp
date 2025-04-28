@@ -29,7 +29,7 @@ class Bridge
 
 		virtual ~Bridge() = default;
 
-		virtual card_t Start(num_t num_of_players, num_t num_of_cards = 5, num_t turn = 0) = 0;
+		virtual card_t Start(num_t num_of_players, num_t num_of_cards = 5) = 0;
 
 		void PlayerTakeCards(num_t, num_t);
 
@@ -38,6 +38,14 @@ class Bridge
 		virtual bool HandleTurn(const cardcontainer_t&) = 0;
 
 		virtual bool HandleResponce() = 0;
+
+		virtual int Looser() 
+		{
+			for (int i = 0; i < m_plist.size(); ++i)
+				if (m_plist[i].size() < 0)
+					return i;
+			return -1;
+		}
 
 		card_t HeapTopCard() 
 		{
@@ -84,11 +92,11 @@ class Bridge
 
 		void ClearAll()
 		{
-			m_plist.clear();
+			for (auto& c : m_plist)
+				c.clear();
 			m_deck.clear();
 			m_heap.clear();
 			m_hot.clear();
-			m_turn = 0;
 			m_cardTaken = false;
 		}
 
@@ -145,7 +153,7 @@ class ClassicalBridge : public Bridge
 {
 public:
 
-	card_t Start(num_t num_of_players, num_t num_of_cards = 5, num_t turn = 0) override;
+	card_t Start(num_t num_of_players, num_t num_of_cards = 5) override;
 
 	void DeckInit() noexcept override;
 
@@ -209,7 +217,7 @@ bool ClassicalBridge::CanPlayerTakeCard()
 	return false;
 }
 
-Bridge::card_t ClassicalBridge::Start(num_t num_of_players, num_t num_of_cards, num_t turn)
+Bridge::card_t ClassicalBridge::Start(num_t num_of_players, num_t num_of_cards)
 {
 	DeckInit();
 	ShuffleDeck();
@@ -219,7 +227,7 @@ Bridge::card_t ClassicalBridge::Start(num_t num_of_players, num_t num_of_cards, 
 	while (num_of_players--)
 		PlayerTakeCards(num_of_players, num_of_cards);
 	//m_heap.push_back(m_plist[turn].back());
-	return m_plist[turn].back();
+	return m_plist[m_turn].back();
 }
 
 bool ClassicalBridge::HandleResponce()
@@ -295,7 +303,7 @@ Checking:
 		{
 		case 14:
 		{
-			if (cards[i].num() != prev.num() || prev.num() != 6 && cards[i].suit() != prev.suit() || prev.num() != 9)
+			if (cards[i].num() != prev.num() && (prev.num() != 6 && cards[i].suit() != prev.suit()) && prev.num() != 9)
 				return false;
 
 			int inc = i;
