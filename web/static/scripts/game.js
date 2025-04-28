@@ -176,7 +176,10 @@ function SynchonizePlayers(data) {
 
 
 function CheckChanges() {
-        GameCheck();
+	if (!GAME_STARTED)
+		PreGameCheck();
+	else
+        	GameCheck();
 }
 
 function GameCheck() {

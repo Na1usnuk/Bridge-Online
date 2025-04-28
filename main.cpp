@@ -1,4 +1,4 @@
-#include "core\BridgeCore.h"
+#include "core/BridgeCore.h"
 #include <iostream>
 #include <cstdlib>
 #include <array>
@@ -108,7 +108,9 @@ void CLIBridge()
 		auto currentTurn = s.CurrentTurn();
 
 		std::cout << "\t\tOn Heap: " << s.OnTopCard() << '\n';
-		std::cout << "\n\n\nPlayer: " << currentTurn.nick() << "\n\nCards: ";
+		std::cout << "\n\n\nPlayer: " << currentTurn.nick() 
+			  << "\nPoints: " << currentTurn.points() 
+			  << "\n\nCards: ";
 
 		for (const auto& c : s.GetPlayerCards(currentTurn.nick()))
 			std::cout << c << ' ';
@@ -129,6 +131,19 @@ void CLIBridge()
 		{
 			if (!s.EndTurn()) 
 				CLIError("Invalid Turn");
+			else if(s.IsGameEnded())
+			{
+				s.EndGame();
+				s.CalculateAllPoints();
+				std::cout << "\nGame End!\n\nContinue Playing? [y/n]:";
+				std::string inp;
+				std::cin >> inp;
+				if(inp == "y")
+					s.StartGame();
+				else
+					gameShouldEnd == true;
+
+			}
 			continue;
 		}
 
@@ -141,12 +156,6 @@ void CLIBridge()
 		}
 
 		s.Turn(res.first);
-
-
-		if (s.IsGameEnded())
-		{
-
-		}
 
 
 		//gameShouldEnd = true;

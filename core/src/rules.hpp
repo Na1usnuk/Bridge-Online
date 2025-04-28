@@ -264,8 +264,10 @@ bool ClassicalBridge::HandleTurn(const cardcontainer_t& cards)
 		return true;
 	}
 
-	if ( (cards.back().num() == 6 || cards.back().num() == 9) && GetPlayerCards().size() != cards.size())
+
+	if(cards.back().num() == 9 || cards.back().num() == 6)
 		return false;
+
 	
 	bool needToChooseSuit = false;
 	card_t prev = HeapTopCard();
@@ -274,10 +276,15 @@ bool ClassicalBridge::HandleTurn(const cardcontainer_t& cards)
 	{
 		prev = cards[0];
 		++i;
+		goto Checking;
 	}
 
-	if (cards.front().num() != prev.num() && cards.front().suit() != prev.suit() && cards.front().num() != Card::Valet && !prev)
+	if (cards.front().num() != prev.num() && cards.front().suit() != prev.suit() && cards.front().num() != Card::Valet)
 		return false;
+
+Checking:
+
+	std::cout << "Checking" << std::endl;
 
 	prev = cards.front();
 
@@ -315,10 +322,10 @@ bool ClassicalBridge::HandleTurn(const cardcontainer_t& cards)
 		{
 			break;
 		}
-		
+
 		default:
 		{
-			if (cards[i].num() != prev.num() || prev.num() != 6 && cards[i].suit() != prev.suit() || prev.num() != 9)
+			if (cards[i].num() != prev.num() && (prev.num() != 6 && cards[i].suit() != prev.suit()) && prev.num() != 9)
 				return false;
 			break;
 		}

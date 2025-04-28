@@ -219,22 +219,22 @@ std::ostream& operator<<(std::ostream& os, Card c)
 	{
 	case Card::Suit::BUBEN:
 	{
-		s_sym = 4;
+		s_sym = 'd';
 		break;
 	}
 	case Card::Suit::CHERVA:
 	{
-		s_sym = 3;
+		s_sym = 'h';
 		break;
 	}
 	case Card::Suit::HRESTA:
 	{
-		s_sym = 5;
+		s_sym = 'c';
 		break;
 	}
 	case Card::Suit::PIKA:
 	{
-		s_sym = 6;
+		s_sym = 's';
 		break;
 	}
 	default:

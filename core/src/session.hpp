@@ -97,6 +97,12 @@ public:
 
 	bool PlayerPickCard()
 	{
+		if(m_currentTurn.back().num() == 6)
+		{
+			m_game->PlayerTakeCards(1);
+			return true;
+		}
+
 		if (!m_game->CanPlayerTakeCard())
 			return false;
 
@@ -137,8 +143,10 @@ public:
 
 			int points = 0;
 			for (auto c : cards)
+			{
 				points += m_game->CalculatePoints(c);
-
+				std::cout << "\nCalculated: " << c.num() << " Points: " << points;
+			}
 			m_plist[i].addPoints(points);
 		}
 	}
@@ -153,6 +161,7 @@ public:
 	{
 		m_game->ClearAll();
 		m_currentTurn.clear();
+		m_is_game_started = false;
 	}
 
 

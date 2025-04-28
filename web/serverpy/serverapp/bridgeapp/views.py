@@ -5,6 +5,7 @@ from django.http.response import HttpResponseRedirect, HttpResponse, JsonRespons
 from django.views.generic import TemplateView
 from .BridgeGame import BridgeSession, Card
 
+from django.conf import settings
 
 sessions = {}
 
@@ -48,6 +49,9 @@ def GameViewPost(req, lobbyName):
     action = req.headers['Action']
     context = {}
 
+    if settings.DEBUG:
+        print('GAME_VIEW_POST')
+
     if action == 'StartGame':
         lobby.StartGame()
         context = PLayersGameContext(req, lobbyName) | GameContext(req, lobbyName)
@@ -89,6 +93,10 @@ def GameViewPost(req, lobbyName):
 def GameContext(req, lobbyName):
     context = {}
     cards = []
+
+    if settings.DEBUG:
+        print('Game_Context')
+
     for c in sessions[lobbyName].GetPlayerCards(req.user.username):
         cards.append(c.repr())
     context['yourCards'] = cards
@@ -102,6 +110,10 @@ def GameContext(req, lobbyName):
 def PLayersGameContext(req, lobbyName):
     context = {}
     players = []
+
+    if settings.DEBUG:
+        print('Player_Game_Context')
+
     for p in sessions[lobbyName].ListOfPlayers():
         players.append((p.nick(), p.points()))
     context['players'] = players
