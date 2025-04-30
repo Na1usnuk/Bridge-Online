@@ -1,9 +1,35 @@
 :root {
   --primary-1: rgba(46, 74, 61, 1);
+  --white: rgba(245, 241, 227, 1);
+  --secondary-2: rgba(123, 25, 55, 1);
+  --48pt-h1-heading-1-font-family: "Press Start 2P", Helvetica;
   --48pt-h1-heading-1-font-weight: 400;
+  --48pt-h1-heading-1-font-size: 48px;
+  --48pt-h1-heading-1-letter-spacing: 0px;
+  --48pt-h1-heading-1-line-height: normal;
+  --48pt-h1-heading-1-font-style: normal;
+  --24pt-h3-heading-3-font-family: "Press Start 2P", Helvetica;
+  --24pt-h3-heading-3-font-weight: 400;
+  --24pt-h3-heading-3-font-size: 24px;
+  --24pt-h3-heading-3-letter-spacing: 0px;
+  --24pt-h3-heading-3-line-height: normal;
+  --24pt-h3-heading-3-font-style: normal;
   --16pt-p-paragraph-font-family: "Press Start 2P", Helvetica;
   --16pt-p-paragraph-font-weight: 400;
   --16pt-p-paragraph-font-size: 16px;
   --16pt-p-paragraph-letter-spacing: 0px;
   --16pt-p-paragraph-line-height: normal;
+  --16pt-p-paragraph-font-style: normal;
+  --32pt-h2-heading-2-font-family: "Press Start 2P", Helvetica;
+  --32pt-h2-heading-2-font-weight: 400;
+  --32pt-h2-heading-2-font-size: 32px;
+  --32pt-h2-heading-2-letter-spacing: 0px;
+  --32pt-h2-heading-2-line-height: normal;
+  --32pt-h2-heading-2-font-style: normal;
+  --18pt-h4-heading-4-font-family: "Press Start 2P", Helvetica;
+  --18pt-h4-heading-4-font-weight: 400;
+  --18pt-h4-heading-4-font-size: 18px;
+  --18pt-h4-heading-4-letter-spacing: 0px;
+  --18pt-h4-heading-4-line-height: normal;
+  --18pt-h4-heading-4-font-style: normal;
 }

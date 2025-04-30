@@ -139,6 +139,38 @@ button:hover {
   z-index: 1;
 }
 
+#play-guest {
+  width: 30%;
+  min-width: 20%;
+  height: 10%;
+  padding: 20px 10px;
+  background-color: #7B1937;
+  color: #F5F1E3;
+  border: none;
+  border-radius: 30px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.shop__item-buy {
+  width: 60%;
+  min-width: 60%;
+  height: 30%;
+  padding: 20px 10px;
+  background-color: #7B1937;
+  color: #F5F1E3;
+  border: none;
+  border-radius: 30px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#play-guest:hover, .shop__item-buy {
+  background-color: #911b3a;
+}
+
 .header__profile button, .back-button {
   border-radius: 50px;
   margin: 15px;
@@ -157,7 +189,7 @@ button:hover {
 }
 
 .shop__item {
-  width: 300px;
+  width: 350px;
   margin: 20px;
   border: 1px solid #ccc;
   padding: 10px;
