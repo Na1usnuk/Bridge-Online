@@ -1,30 +1,20 @@
-<!DOCTYPE html>
-<html lang="uk">
+{% extends 'base/base.html' %}
+{% load static %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Press+Start+2P&display=swap"
-    rel="stylesheet" />
-    {%load static%}
-  <link rel="stylesheet" href="{% static 'styles/styles.css'%}">
-  <link rel="stylesheet" href="{% static 'styles/styleguide.css'%}">
-  <link rel="stylesheet" href="{% static 'styles/game.css'%}">
-    {%csrf_token%}
-  <title>Гра</title>
-</head>
+{% block head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'styles/game.css'%}">
+    {% csrf_token %}
+    <title>Гра</title>
+{% endblock %}
 
-<body>
+{% block content %}
     <script>let GAME_STARTED = {{isGameStarted}}</script>
     <div class="game-container">
         <header class="header-game">
                 <a href="{%url 'home'%}" id="back-button" class="back-button">
                     <img src="{% static 'assets/icons/arrow-left.svg'%}" alt="Назад" class="button__icon">
                 </a>
-            <!-- Рейтинг -->
             <div class="rating">
                 <h2 class="rating-title">Рейтинг</h2>
                 <div id="rating" class="rating-content">
@@ -34,29 +24,22 @@
                 </div>
             </div>
         </header>
-        <!-- Центральний гравець -->
-        
         <div class="top-player">
             <div id="top" class="player-card">{{top}}</div>
         </div>
-        
+
         <div class="game-wrapper">
-            <!-- Лівий гравець -->
             <div class="left-player">
                 <div id="left" class="player-card">{{left}}</div>
             </div>
 
-            <!-- Ігрове поле -->
             <div class="game-field">
-                <!-- Основний ігровий стіл -->
                 <div class="main-game-area">
-                    <!-- Центральна частина -->
                     <div class="center-area">
                         <div class="deck">
                             <button onclick="DeckClick();" style="font-size: 1rem; cursor: cell; font-family: inherit;" class="vertical-section">Колода</button>
                         </div>
 
-                        <!-- Карти на столі -->
                         <div class="horizontal-row" style="margin-left: 40px" id="heap">
 
                             <button onclick="HeapClick();" id="heap_card" class="rectangle" style="font-size: 3rem; font-family: inherit;">{{heap_card}}</button>
@@ -67,18 +50,17 @@
                     </div>
 
                 </div>
-                <!-- Карти гравця -->
                 <div class="horizontal-row" id="player_cards">
 
                 </div>
             </div>
-            <!-- Правий гравець -->
             <div class="right-player">
                 <div id="right" class="player-card">{{right}}</div>
             </div>
         </div>
     </div>
-    <script src="{%static 'scripts/game.js'%}"></script>
-</body>
+{% endblock %}
 
-</html>
+{% block scripts %}
+    <script src="{%static 'scripts/game.js'%}"></script>
+{% endblock %}
