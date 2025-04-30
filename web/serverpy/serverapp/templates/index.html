@@ -1,35 +1,26 @@
-<!DOCTYPE html>
-<html lang="uk">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bridge Game</title>
-      {%load static%}
-    <link rel="stylesheet" href="{%static 'styles\styles.css'%}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Press+Start+2P&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body class="index-body">
-    <header class="header-profile">
-        <div class="header__profile">
-            <a href="{%url 'profile'%}" id="profile-button" class="button button--icon">
-                <img src="{%static 'assets/icons/profile.svg'%}" alt="Профіль" class="button__icon" />
-            </a>
-        </div>
-    </header>
-    <h1>Bridge online</h1>
-    <main class="main">
-      <div class="main__buttons">
-        <a href="{%url 'lobbys'%}" class="main__button">Грати</a>
-        <a href="rules.html" class="main__button">Правила гри</a>
-        <a href="leaderboard.html" class="main__button">Таблиця лідерів</a>
-        <a href="shop.html" class="main__button">Магазин</a>
-      </div>
-    </main>
-    <script src="{%static 'scripts\script.js'%}"></script>
-  </body>
-</html>
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Bridge online{% endblock %}
+
+{% block content %}
+
+<body class="index-body">
+  <header class="header-profile">
+    <div class="header__profile">
+      <a href="{%url 'profile'%}" id="profile-button" class="button button--icon">
+        <img src="{%static 'assets/icons/profile.svg'%}" alt="Профіль" class="button__icon" />
+      </a>
+    </div>
+  </header>
+  <h1>Bridge online</h1>
+  <main class="main">
+    <div class="main__buttons">
+      <a href="{%url 'lobbys'%}" class="main__button">Грати</a>
+      <a href="rules.html" class="main__button">Правила гри</a>
+      <a href="leaderboard.html" class="main__button">Таблиця лідерів</a>
+      <a href="shop.html" class="main__button">Магазин</a>
+    </div>
+  </main>
+</body>
+{% endblock %}

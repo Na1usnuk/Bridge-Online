@@ -1,68 +1,60 @@
-<!DOCTYPE html>
-<html lang="uk">
+{% extends 'base/base.html' %}
+{% load static %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Press+Start+2P&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="../../../static/styles/styles.css">
-  <link rel="stylesheet" href="../../../static/styles/styleguide.css">
-  <link rel="stylesheet" href="../../../static/styles/profile.css">
-  <title>Профіль</title>
-</head>
+{% block title %}Профіль{% endblock %}
 
-<body>
-  <header class="login-header">
-    <a href="/" id="back-button" class="back-button">
-      <img src="../../../static/assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
-    </a>
-  </header>
-    <div class="profile-page">
-      <div class="div">
-  
-        <!-- Кнопка "Налаштування" -->
-        
-  
-        <!-- Аватар -->
-         <div class="account-wrapper">
-        <div class="profile-picture"></div>
-  
-        <!-- Інформація про користувача -->
-        <div class="user-info">
-          <h1 class="username">{{username}}</h1>
-          <br>
-          <p class="account-age">Вік аккаунту: {{date_joined}}.</p>
-        </div>
-        <button class="settings-button">Налаштування</button>
+{% block head %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'styles/profile.css' %}">
+{% endblock %}
 
+{% block header %}
+
+<header class="header">
+  <a href="/" id="back-button" class="back-button">
+    <img src="../../../static/assets/icons/arrow-left.svg" alt="Назад" class="button__icon">
+  </a>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="profile-page">
+  <div class="div">
+
+
+    <!-- Аватар -->
+    <div class="account-wrapper">
+      <div class="profile-picture"></div>
+
+      <!-- Інформація про користувача -->
+      <div class="user-info">
+        <h1 class="username">{{username}}</h1>
+        <br>
+        <p class="account-age">Вік аккаунту: {{date_joined}}.</p>
       </div>
-        <div class="bottom-wrapper">
-        <!-- Статистика -->
-        <div class="stats">
-          <h2 class="stats-title">СТАТИСТИКА</h2>
-          <div class="stat-item">
-            <p class="stat-label">Кількість перемог</p>
-            <p class="stat-value">{{wins_num}}</p>
-          </div>
-          <div class="stat-item">
-            <p class="stat-label">Кількість ігор</p>
-            <p class="stat-value">{{games_num}}</p>
-          </div>
+      <button class="settings-button">Налаштування</button>
+
+    </div>
+    <div class="bottom-wrapper">
+      <!-- Статистика -->
+      <div class="stats">
+        <h2 class="stats-title">СТАТИСТИКА</h2>
+        <div class="stat-item">
+          <p class="stat-label">Кількість перемог</p>
+          <p class="stat-value">{{wins_num}}</p>
         </div>
-  
-        <!-- Скін -->
-        <div class="skin">
-          <div class="skin-select"></div>
-          <p class="skin-label">Скін</p>
+        <div class="stat-item">
+          <p class="stat-label">Кількість ігор</p>
+          <p class="stat-value">{{games_num}}</p>
         </div>
       </div>
+
+      <!-- Скін -->
+      <div class="skin">
+        <div class="skin-select"></div>
+        <p class="skin-label">Скін</p>
       </div>
     </div>
-  </body>
-
-</html>
+  </div>
+</div>
+{% endblock %}
