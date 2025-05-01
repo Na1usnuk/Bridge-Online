@@ -139,6 +139,7 @@ def IsUserPlaying(nick, lobbyName):
 
 
 
-   
+def LeaderBoard(req):
+    return render(req, 'leaderboard.html')
 
 

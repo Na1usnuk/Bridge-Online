@@ -9,6 +9,9 @@ from django.views.generic import TemplateView
 import datetime
 
 
+
+
+
 class HomePageView(TemplateView):
     def get(self, request, **kwargs):
         return render(request, 'index.html', context=None)
@@ -33,10 +36,12 @@ def RegistrationView(req):
     return render(req, 'registration/registration.html', {'form':form})
 
 
+
+
 def ProfileView(req):
     if req.user.is_authenticated:
         date_joined = str(req.user.date_joined)[:10]
-        context = {'username': req.user.username, 'date_joined': date_joined, 'wins_num': '--', 'games_num': '--'}
+        context = {'username': req.user.username, 'date_joined': date_joined, 'wins_num': '--', 'games_num': User.objects.get(username=req.user.username).player.points}
         return render(req, 'registration/profile.html', context)
     else:
         return redirect('login')
