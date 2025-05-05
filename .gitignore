@@ -1,12 +1,10 @@
-.vs
-.git
-x64
-Bridge-Online
-Bridge Online.sln
-Bridge Online.vcxproj
-Bridge Online.vcxproj.filters
-Bridge Online.vcxproj.user
-core/.vs
-packages
-web/serverpy/.vs
-web/serverpy/Lib
+.vs/
+.git/
+packages/
+Scripts/
+Lib/
+CACHEDIR.TAG
+packages.config
+pyvenv.cfg
+serverapp/.vs/
+/**/__pycache__
