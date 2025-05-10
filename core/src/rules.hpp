@@ -279,7 +279,7 @@ bool ClassicalBridge::HandleTurn(const cardcontainer_t& cards)
 	
 	bool needToChooseSuit = false;
 	card_t prev = HeapTopCard();
-	int i = 1;
+	int i = 0;
 	if (!prev)
 	{
 		prev = cards[0];
@@ -287,7 +287,7 @@ bool ClassicalBridge::HandleTurn(const cardcontainer_t& cards)
 		goto Checking;
 	}
 
-	if (cards.front().num() != prev.num() && cards.front().suit() != prev.suit() && cards.front().num() != Card::Valet)
+	if ((cards.front().num() != prev.num()) && (cards.front().suit() != prev.suit()) && cards.front().num() != 11)
 		return false;
 
 Checking:
@@ -303,7 +303,7 @@ Checking:
 		{
 		case 14:
 		{
-			if (cards[i].num() != prev.num() && (prev.num() != 6 && cards[i].suit() != prev.suit()) && prev.num() != 9)
+			if ((cards[i].num() != prev.num()) && (prev.num() != 6 && cards[i].suit() != prev.suit()) && prev.num() != 9)
 				return false;
 
 			int inc = i;
@@ -328,12 +328,12 @@ Checking:
 		}
 		case 11:
 		{
+			if(prev.num() != 11) return false;
 			break;
 		}
-
 		default:
 		{
-			if (cards[i].num() != prev.num() && (prev.num() != 6 && cards[i].suit() != prev.suit()) && prev.num() != 9)
+			if ((cards[i].num() != prev.num()) && (prev.num() == 6 && cards[i].suit() != prev.suit()) && prev.num() != 9)
 				return false;
 			break;
 		}

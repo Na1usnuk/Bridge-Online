@@ -77,6 +77,7 @@ WSGI_APPLICATION = 'serverapp.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 #settings.py
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -95,7 +96,7 @@ DATABASES = {
         'NAME': 'bridgeonline',
     }
 }
-'''
+
 
 
 # Password validation
