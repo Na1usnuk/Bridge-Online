@@ -42,7 +42,7 @@
 
                         <div class="horizontal-row" style="margin-left: 40px" id="heap">
 
-                            <button onclick="HeapClick();" id="heap_card" class="rectangle" style="font-size: 3rem; font-family: inherit;">{{heap_card}}</button>
+                            <button onclick="HeapClick();" id="heap_card" class="card" data-suit="spade" data-value="A" style="font-family: inherit;">{{heap_card}}</button>
 
                         </div>
                         <div>
@@ -63,4 +63,5 @@
 
 {% block scripts %}
     <script src="{%static 'scripts/game.js'%}"></script>
+    <script src="{%static 'scripts/card.js'%}"></script>
 {% endblock %}
