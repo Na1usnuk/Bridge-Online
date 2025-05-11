@@ -109,7 +109,8 @@ h1 {
 }
 
 button:hover {
-  background-color: #ebe5cf;;
+  background-color: #ebe5cf;
+  ;
 }
 
 .button__icon {
@@ -139,45 +140,15 @@ button:hover {
   z-index: 1;
 }
 
-#play-guest {
-  width: 30%;
-  min-width: 20%;
-  height: 10%;
-  padding: 20px 10px;
-  background-color: #7B1937;
-  color: #F5F1E3;
-  border: none;
-  border-radius: 30px;
-  font-family: "Press Start 2P", cursive;
-  font-size: 1.25rem;
-  cursor: pointer;
-}
-
-.shop__item-buy {
-  width: 60%;
-  min-width: 60%;
-  height: 30%;
-  padding: 20px 10px;
-  background-color: #7B1937;
-  color: #F5F1E3;
-  border: none;
-  border-radius: 30px;
-  font-family: "Press Start 2P", cursive;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-#play-guest:hover, .shop__item-buy {
-  background-color: #911b3a;
-}
-
-.header__profile button, .back-button {
+.header__profile button,
+.back-button {
   border-radius: 50px;
   margin: 15px;
   background-color: #F5F1E3;
 }
 
-.header__profile button:hover, .back-button:hover {
+.header__profile button:hover,
+.back-button:hover {
   background-color: #e3ddc5;
 }
 
@@ -189,7 +160,7 @@ button:hover {
 }
 
 .shop__item {
-  width: 350px;
+  width: 300px;
   margin: 20px;
   border: 1px solid #ccc;
   padding: 10px;
@@ -210,7 +181,8 @@ button:hover {
   margin-bottom: 10px;
 }
 
-.guest button, .shop__item button {
+.guest button,
+.shop__item button {
   text-align: center;
   padding: 15px 20px;
   margin: 15px 0;
@@ -254,14 +226,26 @@ button:hover {
 
 /* Стилі для сторінки rules.html */
 .rules {
-  width: 800px;
+  width: 80%;
   margin: 0 auto;
   color: #e3ddc5;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  border-radius: 8px;
 }
 
-.rules ul,
-.rules ol {
-  margin-left: 20px;
+#rules {
+  font-family: 'Press Start 2P', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .highlighted-button {
@@ -269,9 +253,134 @@ button:hover {
   color: white;
 }
 
+.rules__title {
+  font-family: 'Press Start 2P', cursive;
+  color: #c82455;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.rules__subtitle {
+  font-weight: bold;
+  color: #911b3e;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 5px;
+}
+
+.rules ul,
+.rules ol {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.rules li {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.rules li ul {
+  margin-top: 8px;
+  padding-left: 20px;
+}
+
+.rules p {
+  color: #555;
+  margin-bottom: 15px;
+}
+
 @media (max-width: 768px) {
   .back-button {
     height: 50px;
     width: 50px;
   }
+
+  .rules {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+
+  h1 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 2.5em;
+  }
+
+  .main__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main__button {
+    min-width: 224px;
+  }
+
+  .main__button:first-child {
+    font-size: 2.5em;
+    min-width: 324px;
+  }
+
+  .main__button:nth-child(2) {
+    font-size: 1.5em;
+    min-width: 324px;
+  }
+
+  .main {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .rules__title {
+    font-size: 1.2rem;
+  }
+
+  .rules__subtitle {
+    font-size: 1rem;
+  }
+
+  .back-button {
+    margin-left: 10px;
+  }
+
+  .button__icon {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .main__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main__button {
+    min-width: 204px;
+    font-size: 1rem;
+  }
+
+  .main__button:first-child {
+    font-size: 1.3rem;
+    min-width: 254px;
+  }
+
+  .main__button:nth-child(2) {
+    font-size: 1rem;
+    min-width: 254px;
+  }
+
+  .rules__title {
+    font-size: 1.1rem;
+  }
+
+  .rules__subtitle {
+    font-size: 0.9rem;
+  }
+
 }
