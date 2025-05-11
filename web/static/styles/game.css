@@ -1,3 +1,14 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  min-height: 100vh;
+}
+
 /* Game Container */
 .game-container {
   display: flex;
@@ -16,7 +27,7 @@ header {
 /* Rating (праворуч зверху) */
 .rating {
   background-color: rgba(27, 36, 50, 0.5); /* Напівпрозорий чорний */
-  margin: 1.25rem 1.25rem 0 0;
+  margin: 1.25rem 1.5rem 0 0;
   padding: 0 10px 0 10px;
   color: #ffffff; /* Білий текст */
   text-align: center;
@@ -29,7 +40,7 @@ header {
 }
 
 .rating-content {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .game-wrapper {
@@ -54,7 +65,6 @@ header {
   display: flex;
   justify-content: center;
   margin-top: -11.5rem;
-
 }
 
 .main-game-area {
@@ -76,14 +86,26 @@ header {
 }
 
 .top-player .player-card, .left-player .player-card, .right-player .player-card {
-  width: 7rem;
-  height: 10rem;
+  --width: clamp(5.2em, 12.6vw, 8em);
+  --height: calc(var(--width) * 1.4);
+  width: var(--width);
+  height: var(--height);
   background-color: rgba(245, 241, 227, 1);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;
+  font-size: 0.75rem;
+  text-align: center;
   color: rgba(0, 0, 0, 1);
+  border: 1px solid black;
+  border-radius: 0.3em;
+  padding: 4.8rem 3.7rem;
+}
+
+
+
+#heap_card {
+ margin-left: -2rem;
 }
 
 /* Center Area (Vertical Sections) */
@@ -94,6 +116,7 @@ header {
 
 .deck {
   margin: 1rem 0;
+  border: solid black 0.5rem;
 }
 
 .thrown-cards {
@@ -101,8 +124,8 @@ header {
 }
 
 .center-area .vertical-section {
-  width: 8rem;
-  height: 12rem;
+  width: 7rem;
+  height: 10rem;
   background-color: rgba(245, 241, 227, 1);
 }
 
@@ -116,6 +139,10 @@ header {
   margin: 0 7rem;
 }
 
+#player_cards .card {
+  margin-left: -1.3rem ;
+}
+
 .horizontal-row .rectangle {
   width: 8rem;
   height: 12rem;
@@ -123,16 +150,467 @@ header {
   border: 1px solid rgba(124, 137, 156, 1);
 }
 
+.card {
+  --width: clamp(5.2em, 10.5vw, 6em);
+  --height: calc(var(--width) * 1.5);
+  width: var(--width);
+  height: var(--height);
+  background-color: rgba(245, 241, 227, 1);
+  border: 1px solid black;
+  border-radius: 0.3em;
+  padding: 1.2em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  position: relative;
+  align-items: center;
+  font-size: clamp(0.84rem, 1.8vw, 1.2rem);
+}
+
+
+#player_cards .card {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: rgba(245, 241, 227, 1);
+}
+
+.corner-number::after {
+  width: 0.9em; /* +20% */
+  height: 0.9em; /* +20% */
+}
+
+#player_cards .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  background-color: rgb(226, 222, 205);
+}
+
+[data-suit="heart"].card,
+[data-suit="diamond"].card {
+  color: red;
+}
+
+[data-suit="spade"].card,
+[data-suit="club"].card {
+  color: black;
+}
+
+.pip {
+  grid-row-end: span 2;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+[data-suit="heart"] .pip {
+  background-image: url("assets/images/heart.svg");
+}
+
+[data-suit="diamond"] .pip {
+  background-image: url("assets/images/diamond.svg");
+}
+
+[data-suit="spade"] .pip {
+  background-image: url("assets/images/spade.svg");
+}
+
+[data-suit="club"] .pip {
+  background-image: url("assets/images/club.svg");
+}
+
+.corner-number {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: -0.1em;
+  font-size: 1.1em;
+}
+
+.corner-number.top {
+  top: 0.1em;
+  left: 0.1em;
+}
+
+.corner-number.bottom {
+  bottom: 0.1em;
+  right: 0.1em;
+  transform: rotate(180deg);
+}
+
+.corner-number::after {
+  line-height: 0;
+  display: block;
+  width: 0.75em;
+  height: 0.75em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-suit="heart"] .corner-number::after {
+  background-image: url("assets/images/heart.svg");
+  content: "";
+}
+
+[data-suit="spade"] .corner-number::after {
+  background-image: url("assets/images/spade.svg");
+  content: "";
+}
+
+[data-suit="club"] .corner-number::after {
+  background-image: url("assets/images/club.svg");
+  content: "";
+}
+
+[data-suit="diamond"] .corner-number::after {
+  background-image: url("assets/images/diamond.svg");
+  content: "";
+}
+
+/* Решта стилів для розміщення піпів залишаються незмінними */
+[data-value="A"] .pip,
+[data-value="J"] .pip,
+[data-value="Q"] .pip,
+[data-value="K"] .pip {
+  grid-row-start: 2;
+  grid-column-start: 1;
+  grid-row-end: span 6;
+  grid-column-end: span 3;
+}
+
+[data-value="2"] .pip:first-child {
+  grid-row-start: 1;
+  grid-column-start: 2;
+}
+
+[data-value="2"] .pip:nth-child(2) {
+  grid-row-start: 7;
+  grid-column-start: 2;
+  transform: rotate(180deg);
+}
+
+[data-value="3"] .pip:first-child {
+  grid-row-start: 1;
+  grid-column-start: 2;
+}
+
+[data-value="3"] .pip:nth-child(2) {
+  grid-row-start: 4;
+  grid-column-start: 2;
+}
+
+[data-value="3"] .pip:nth-child(3) {
+  grid-row-start: 7;
+  grid-column-start: 2;
+  transform: rotate(180deg);
+}
+
+[data-value="4"] .pip:first-child {
+  grid-row-start: 1;
+  grid-column-start: 1;
+}
+
+[data-value="4"] .pip:nth-child(2) {
+  grid-row-start: 1;
+  grid-column-start: 3;
+}
+
+[data-value="4"] .pip:nth-child(3) {
+  grid-row-start: 7;
+  grid-column-start: 1;
+  transform: rotate(180deg);
+}
+
+[data-value="4"] .pip:nth-child(4) {
+  grid-row-start: 7;
+  grid-column-start: 3;
+  transform: rotate(180deg);
+}
+
+[data-value="5"] .pip:first-child {
+  grid-row-start: 1;
+  grid-column-start: 1;
+}
+
+[data-value="5"] .pip:nth-child(2) {
+  grid-row-start: 1;
+  grid-column-start: 3;
+}
+
+[data-value="5"] .pip:nth-child(3) {
+  grid-row-start: 7;
+  grid-column-start: 1;
+  transform: rotate(180deg);
+}
+
+[data-value="5"] .pip:nth-child(4) {
+  grid-row-start: 7;
+  grid-column-start: 3;
+  transform: rotate(180deg);
+}
+
+[data-value="5"] .pip:nth-child(5) {
+  grid-row-start: 4;
+  grid-column-start: 2;
+}
+
+[data-value="6"] .pip:first-child {
+  grid-row-start: 1;
+  grid-column-start: 1;
+}
+
+[data-value="6"] .pip:nth-child(2) {
+  grid-row-start: 1;
+  grid-column-start: 3;
+}
+
+[data-value="6"] .pip:nth-child(3) {
+  grid-row-start: 7;
+  grid-column-start: 1;
+  transform: rotate(180deg);
+}
+
+[data-value="6"] .pip:nth-child(4) {
+  grid-row-start: 7;
+  grid-column-start: 3;
+  transform: rotate(180deg);
+}
+
+[data-value="6"] .pip:nth-child(5) {
+  grid-row-start: 4;
+  grid-column-start: 1;
+}
+
+[data-value="6"] .pip:nth-child(6) {
+  grid-row-start: 4;
+  grid-column-start: 3;
+}
+
+[data-value="7"] .pip:first-child {
+  grid-row-start: 1;
+  grid-column-start: 1;
+}
+
+[data-value="7"] .pip:nth-child(2) {
+  grid-row-start: 1;
+  grid-column-start: 3;
+}
+
+[data-value="7"] .pip:nth-child(3) {
+  grid-row-start: 7;
+  grid-column-start: 1;
+  transform: rotate(180deg);
+}
+
+[data-value="7"] .pip:nth-child(4) {
+  grid-row-start: 7;
+  grid-column-start: 3;
+  transform: rotate(180deg);
+}
+
+[data-value="7"] .pip:nth-child(5) {
+  grid-row-start: 4;
+  grid-column-start: 1;
+}
+
+[data-value="7"] .pip:nth-child(6) {
+  grid-row-start: 4;
+  grid-column-start: 3;
+}
+
+[data-value="7"] .pip:nth-child(7) {
+  grid-row-start: 2;
+  grid-column-start: 2;
+}
+
+[data-value="8"] .pip:first-child {
+  grid-row-start: 1;
+  grid-column-start: 1;
+}
+
+[data-value="8"] .pip:nth-child(2) {
+  grid-row-start: 1;
+  grid-column-start: 3;
+}
+
+[data-value="8"] .pip:nth-child(3) {
+  grid-row-start: 7;
+  grid-column-start: 1;
+  transform: rotate(180deg);
+}
+
+[data-value="8"] .pip:nth-child(4) {
+  grid-row-start: 7;
+  grid-column-start: 3;
+  transform: rotate(180deg);
+}
+
+[data-value="8"] .pip:nth-child(5) {
+  grid-row-start: 4;
+  grid-column-start: 1;
+}
+
+[data-value="8"] .pip:nth-child(6) {
+  grid-row-start: 4;
+  grid-column-start: 3;
+}
+
+[data-value="8"] .pip:nth-child(7) {
+  grid-row-start: 2;
+  grid-column-start: 2;
+}
+
+[data-value="8"] .pip:nth-child(8) {
+  grid-row-start: 6;
+  grid-column-start: 2;
+  transform: rotate(180deg);
+}
+
+[data-value="9"] .pip:first-child {
+  grid-row-start: 1;
+  grid-column-start: 1;
+}
+
+[data-value="9"] .pip:nth-child(2) {
+  grid-row-start: 3;
+  grid-column-start: 1;
+}
+
+[data-value="9"] .pip:nth-child(3) {
+  grid-row-start: 5;
+  grid-column-start: 1;
+  transform: rotate(180deg);
+}
+
+[data-value="9"] .pip:nth-child(4) {
+  grid-row-start: 7;
+  grid-column-start: 1;
+  transform: rotate(180deg);
+}
+
+[data-value="9"] .pip:nth-child(5) {
+  grid-row-start: 1;
+  grid-column-start: 3;
+}
+
+[data-value="9"] .pip:nth-child(6) {
+  grid-row-start: 3;
+  grid-column-start: 3;
+}
+
+[data-value="9"] .pip:nth-child(7) {
+  grid-row-start: 5;
+  grid-column-start: 3;
+  transform: rotate(180deg);
+}
+
+[data-value="9"] .pip:nth-child(8) {
+  grid-row-start: 7;
+  grid-column-start: 3;
+  transform: rotate(180deg);
+}
+
+[data-value="9"] .pip:nth-child(9) {
+  grid-row-start: 4;
+  grid-column-start: 2;
+}
+
+
+
+[data-value="10"] .pip:first-child {
+  grid-row-start: 1;
+  grid-column-start: 1;
+}
+
+[data-value="10"] .pip:nth-child(2) {
+  grid-row-start: 3;
+  grid-column-start: 1;
+}
+
+[data-value="10"] .pip:nth-child(3) {
+  grid-row-start: 5;
+  grid-column-start: 1;
+  transform: rotate(180deg);
+}
+
+[data-value="10"] .pip:nth-child(4) {
+  grid-row-start: 7;
+  grid-column-start: 1;
+  transform: rotate(180deg);
+}
+
+[data-value="10"] .pip:nth-child(5) {
+  grid-row-start: 1;
+  grid-column-start: 3;
+}
+
+[data-value="10"] .pip:nth-child(6) {
+  grid-row-start: 3;
+  grid-column-start: 3;
+}
+
+[data-value="10"] .pip:nth-child(7) {
+  grid-row-start: 5;
+  grid-column-start: 3;
+  transform: rotate(180deg);
+}
+
+[data-value="10"] .pip:nth-child(8) {
+  grid-row-start: 7;
+  grid-column-start: 3;
+  transform: rotate(180deg);
+}
+
+[data-value="10"] .pip:nth-child(9) {
+  grid-row-start: 2;
+  grid-column-start: 2;
+}
+
+[data-value="10"] .pip:nth-child(10) {
+  grid-row-start: 6;
+  grid-column-start: 2;
+  transform: rotate(180deg);
+}
+
+#player_cards .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(212, 14, 14, 0.2);
+  z-index: 10;
+}
+
+@media (min-width: 1200px) {
+  .top-player .player-card,
+  .left-player .player-card,
+  .right-player .player-card {
+    --width: 8rem;
+}
+}
+
 /* Адаптивність */
 @media (max-width: 768px) {
   .top-player .player-card,
   .left-player .player-card,
   .right-player .player-card {
-    width: 4rem;
-    height: 6rem;
-    font-size: 2rem;
+    --width: 5rem; 
+    padding: 0.96em;
+  border: 1px solid black;
+  font-size: 0.6rem;
+  border-radius: 0.3em; /* трохи збільшимо */
+  padding: 1.2em; /* +20% */
   }
 
+  .center-area .vertical-section {
+  width: 7rem;
+  height: 10rem;
+  }
   .left-player, .right-player {
     margin: 0 auto;
   }
@@ -142,27 +620,42 @@ header {
   }
 
   .game-field {
-    max-width: 50%;
+    max-width: 65%;
   }
 
   .center-area .vertical-section, .horizontal-row .rectangle  {
     width: 5rem;
     height: 7rem;
+    padding: 0.25rem;
   }
 
   .rating-title, .rating-content {
-    font-size: 0.75rem;
+    font-size: 0.70rem;
   }
-  
+
+  .deck button {
+    font-size: 0.6rem;
+  }
+
+  .deck {
+    border: solid black 0.2rem;
+  }
+
+
 }
 
 @media (max-width: 480px) {
   .top-player .player-card,
   .left-player .player-card,
   .right-player .player-card {
-    width: 3.25rem;
-    height: 5rem;
-    font-size: 1.5rem;
+    width: 3.65rem;
+    height: 5.3rem;
+    font-size: 0.4rem;
+  }
+
+  .card {
+    width: 3.65rem;
+    height: 5.3rem;
   }
 
   .left-player, .right-player {
@@ -174,15 +667,18 @@ header {
   }
 
   .game-field {
-    max-width: 45%;
+    max-width: 65%;
   }
 
   .rating-title, .rating-content {
-    font-size: 0.75rem;
+    font-size: 0.55rem;
   }
 
   .center-area .vertical-section, .horizontal-row .rectangle  {
     width: 4rem;
     height: 5.5rem;
+  }
+  .deck button {
+    font-size: 0.45rem;
   }
 }
