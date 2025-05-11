@@ -58,7 +58,22 @@
                 <div id="right" class="player-card">{{right}}</div>
             </div>
         </div>
+        <button id="showHistoryLeft" class="history-button left" onclick="toggleHistory('left')">Історія ходів</button>
+        <!-- Для історії ходів -->
+        <div class="game-history">
+            <p>Останній хід</p>
+        </div>
     </div>
+
+    <!-- При викиданні валета гравець повинен вибрати масть. Підказка для вибору масті -->
+
+    <!-- <div id="suitPopup" class="suit-popup">
+        <p>Виберіть масть:</p>
+        <button onclick="selectSuit('Піки')">Піки</button>
+        <button onclick="selectSuit('Чирви')">Чирви</button>
+        <button onclick="selectSuit('Бубни')">Бубни</button>
+        <button onclick="selectSuit('Хрести')">Хрести</button>
+    </div> -->
 {% endblock %}
 
 {% block scripts %}
