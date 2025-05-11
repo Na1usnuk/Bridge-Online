@@ -237,3 +237,57 @@ function StartGame() {
            SynchronizeField(json);
     })
 }
+
+// При викиданні валета гравець повинен вибрати масть. Підказка для вибору масті
+function showSuitPopup(element) {
+  const popup = document.getElementById("suitPopup");
+  popup.style.display = "block";
+
+  // Розміщуємо попап біля елемента, який викликав його
+  const rect = element.getBoundingClientRect();
+  popup.style.left = rect.left + window.scrollX + "px";
+  popup.style.top = rect.bottom + window.scrollY + 5 + "px";
+}
+
+function hideSuitPopup() {
+  const popup = document.getElementById("suitPopup");
+  popup.style.display = "none";
+}
+
+function selectSuit(suit) {
+  alert("Вибрано масть: " + suit);
+  hideSuitPopup();
+  // Тут можна додати логіку обробки вибраної масті
+}
+
+// Для історії ходів
+function toggleHistory(buttonSide) {
+  const historyDiv = document.querySelector(".game-history");
+  const showHistoryLeftButton = document.getElementById("showHistoryLeft");
+
+  if (historyDiv.style.display === "none") {
+    historyDiv.style.display = "block";
+    if (buttonSide === "left") {
+      showHistoryLeftButton.classList.add("hidden");
+      const hideButton = document.createElement("button");
+      hideButton.textContent = "Приховати історію";
+      hideButton.className = "history-button left";
+      hideButton.onclick = function () {
+        toggleHistory("left");
+      };
+      showHistoryLeftButton.parentNode.insertBefore(
+        hideButton,
+        showHistoryLeftButton.nextSibling
+      );
+    }
+  } else {
+    historyDiv.style.display = "none";
+    if (buttonSide === "left") {
+      const hideButton = showHistoryLeftButton.nextSibling;
+      if (hideButton && hideButton.textContent === "Приховати історію") {
+        hideButton.remove();
+        showHistoryLeftButton.classList.remove("hidden");
+      }
+    }
+  }
+}
