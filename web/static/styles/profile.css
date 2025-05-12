@@ -121,55 +121,124 @@
   margin: 0 auto;
 }
 
+@media (max-width: 1000px) {
+    .profile-page .account-age {
+    margin-left: 2.5rem;
+    font-size: 0.9rem;
+  }
+  .profile-page .settings-button {
+  width: 40%;
+  min-width: 40%;
+  height: 10%;
+  padding: 20px 5px;
+}
+}
 /* Адаптивність */
 @media (max-width: 768px) {
   .profile-page .username {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
+  .profile-page .profile-picture {
+  width: 200px;
+  height: 120px;
+  background-color: #f5f1e3; /* Бежевий */
+  border-radius: 50%;
+  margin: auto auto;
+}
+
   .profile-page .account-age {
+    margin-left: 1rem;
     font-size: 0.9rem;
   }
 
   .profile-page .stats-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .profile-page .stat-label {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .profile-page .stat-value {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .profile-page .skin-select {
     height: 200px;
   }
+
+  .profile-page .settings-button {
+    font-size: 0.8rem;
+  }
+
+  .profile-page .settings-button {
+    margin-top: 0.5rem;
+  width: 40%;
+  min-width: 40%;
+  height: 10%;
+  padding: 15px 4px;
+}
+
+.profile-page .skin-label {
+  font-size: 1.1rem;
+  padding: 5px 0;
+}
+
+.profile-page .skin-select, .profile-page .skin-label {
+  max-width: 60%;
+}
+
+.profile-page .div {
+  margin-top: -3rem;
+}
 }
 
 @media (max-width: 480px) {
-  .profile-page .username {
-    font-size: 1rem;
+
+    .profile-page .username {
+    font-size: 0.9rem;
+    margin-left: 0rem;
   }
 
+  .profile-page .profile-picture {
+  width: 100px;
+  height: 80px;
+  background-color: #f5f1e3; /* Бежевий */
+  border-radius: 50%;
+}
+
   .profile-page .account-age {
-    font-size: 0.8rem;
+    margin-left: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .profile-page .stats-title {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .profile-page .stat-label {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .profile-page .stat-value {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .profile-page .skin-select {
     height: 150px;
   }
+
+  .profile-page .div {
+  margin-top: -6rem;
+}
+
+  .profile-page .settings-button {
+  margin-left: 0.5rem;
+  width: 49%;
+  min-width: 49%;
+  height: 7%;
+  padding: 13px 3px;
+  font-size: 0.8rem;
+} 
 }
