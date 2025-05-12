@@ -654,7 +654,7 @@ font-family: var(--48pt-h1-heading-1-font-family);
   z-index: 10;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 900px) {
 
   .top-player .player-card,
   .left-player .player-card,
@@ -665,8 +665,12 @@ font-family: var(--48pt-h1-heading-1-font-family);
   #heap_card {
  margin-left: -5.5rem;
 }
+}
 
-  
+@media (min-width: 780px) {
+.top-player .player-card {
+  margin-top: 4rem;
+}
 }
 
 /* Адаптивність */
