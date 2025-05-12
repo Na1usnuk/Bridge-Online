@@ -279,19 +279,19 @@ font-family: var(--48pt-h1-heading-1-font-family);
 }
 
 [data-suit="heart"] .pip {
-  background-image: url("assets/images/heart.svg");
+  background-image: url("/static/assets/images/heart.svg");
 }
 
 [data-suit="diamond"] .pip {
-  background-image: url("assets/images/diamond.svg");
+  background-image: url("/static/assets/images/diamond.svg");
 }
 
 [data-suit="spade"] .pip {
-  background-image: url("assets/images/spade.svg");
+  background-image: url("/static/assets/images/spade.svg");
 }
 
 [data-suit="club"] .pip {
-  background-image: url("assets/images/club.svg");
+  background-image: url("/static/assets/images/club.svg");
 }
 
 .corner-number {
@@ -326,22 +326,22 @@ font-family: var(--48pt-h1-heading-1-font-family);
 }
 
 [data-suit="heart"] .corner-number::after {
-  background-image: url("assets/images/heart.svg");
+  background-image: url("/static/assets/images/heart.svg");
   content: "";
 }
 
 [data-suit="spade"] .corner-number::after {
-  background-image: url("assets/images/spade.svg");
+  background-image: url("/static/assets/images/spade.svg");
   content: "";
 }
 
 [data-suit="club"] .corner-number::after {
-  background-image: url("assets/images/club.svg");
+  background-image: url("/static/assets/images/club.svg");
   content: "";
 }
 
 [data-suit="diamond"] .corner-number::after {
-  background-image: url("assets/images/diamond.svg");
+  background-image: url("/static/assets/images/diamond.svg");
   content: "";
 }
 
@@ -653,7 +653,6 @@ font-family: var(--48pt-h1-heading-1-font-family);
   box-shadow: 0 4px 8px rgba(212, 14, 14, 0.2);
   z-index: 10;
 }
-
 
 @media (min-width: 1200px) {
 
