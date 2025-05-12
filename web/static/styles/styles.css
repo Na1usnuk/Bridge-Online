@@ -46,12 +46,13 @@ body {
   background-color: #F5F1E3;
 }
 
-.header__profile button, .header__profile a {
+.header__profile button,
+.header__profile a {
   border-radius: 100px;
   margin: auto;
 }
 
-.header__profile:hover  {
+.header__profile:hover {
   background-color: #e3ddc5;
 }
 
@@ -144,7 +145,7 @@ button:hover {
   border-radius: 50px;
   margin: 15px;
   background-color: #F5F1E3;
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .header__profile button:hover,
@@ -293,7 +294,9 @@ button:hover {
 }
 
 @media (max-width: 768px) {
-  .back-button, .header__profile {
+
+  .back-button,
+  .header__profile {
     height: 60px;
     width: 60px;
   }
@@ -306,7 +309,7 @@ button:hover {
   h1 {
     text-align: center;
     font-weight: 400;
-    font-size: 2.5em;
+    font-size: 2.2em;
   }
 
   .main__buttons {
@@ -317,15 +320,16 @@ button:hover {
 
   .main__button {
     min-width: 224px;
+    font-size: 1.2em;
   }
 
   .main__button:first-child {
-    font-size: 2.5em;
+    font-size: 1.8em;
     min-width: 324px;
   }
 
   .main__button:nth-child(2) {
-    font-size: 1.5em;
+    font-size: 1.3em;
     min-width: 324px;
   }
 
@@ -354,9 +358,16 @@ button:hover {
 
 @media (max-width: 480px) {
 
-    .back-button, .header__profile {
+  .back-button,
+  .header__profile {
     height: 55px;
     width: 55px;
+  }
+
+  h1 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.8em;
   }
 
   .main__buttons {
@@ -367,16 +378,16 @@ button:hover {
 
   .main__button {
     min-width: 204px;
-    font-size: 1rem;
+    font-size: 1em;
   }
 
   .main__button:first-child {
-    font-size: 1.3rem;
+    font-size: 1.6em;
     min-width: 254px;
   }
 
   .main__button:nth-child(2) {
-    font-size: 1rem;
+    font-size: 1.2rem;
     min-width: 254px;
   }
 
@@ -387,5 +398,4 @@ button:hover {
   .rules__subtitle {
     font-size: 0.9rem;
   }
-
 }
