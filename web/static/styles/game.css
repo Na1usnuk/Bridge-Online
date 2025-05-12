@@ -152,23 +152,6 @@ header {
   border: 1px solid rgba(124, 137, 156, 1);
 }
 
-.card {
-  --width: clamp(5.2em, 10.5vw, 6em);
-  --height: calc(var(--width) * 1.5);
-  width: var(--width);
-  height: var(--height);
-  background-color: rgba(245, 241, 227, 1);
-  border: 1px solid black;
-  border-radius: 0.3em;
-  padding: 1.2em;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  position: relative;
-  align-items: center;
-  font-size: clamp(0.84rem, 1.8vw, 1.2rem);
-}
-
 .suit-popup {
   display: none;
   position: absolute;
@@ -247,6 +230,10 @@ header {
   position: relative;
   align-items: center;
   font-size: clamp(0.84rem, 1.8vw, 1.2rem);
+}
+
+.horizontal-row button {
+font-family: var(--48pt-h1-heading-1-font-family);
 }
 
 #player_cards .card {
@@ -666,6 +653,7 @@ header {
   box-shadow: 0 4px 8px rgba(212, 14, 14, 0.2);
   z-index: 10;
 }
+
 
 @media (min-width: 1200px) {
 
