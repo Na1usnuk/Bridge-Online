@@ -41,17 +41,17 @@ body {
 .header__profile {
   display: flex;
   align-items: center;
-  width: 86px;
-  height: 86px;
-}
-
-.header__profile button {
-  border-radius: 50px;
-  margin: 15px;
+  width: 70px;
+  height: 70px;
   background-color: #F5F1E3;
 }
 
-.header__profile button:hover {
+.header__profile button, .header__profile a {
+  border-radius: 100px;
+  margin: auto;
+}
+
+.header__profile:hover  {
   background-color: #e3ddc5;
 }
 
@@ -110,12 +110,11 @@ h1 {
 
 button:hover {
   background-color: #ebe5cf;
-  ;
 }
 
 .button__icon {
   border: none;
-  height: 30px;
+  height: 38px;
 }
 
 .button--icon {
@@ -132,19 +131,20 @@ button:hover {
 }
 
 .back-button {
-  height: 62px;
-  width: 62px;
+  width: 70px;
+  height: 70px;
+  background-color: #F5F1E3;
   border-radius: 50px;
   border: none;
-  cursor: pointer;
   z-index: 1;
 }
 
-.header__profile button,
+.header__profile,
 .back-button {
   border-radius: 50px;
   margin: 15px;
   background-color: #F5F1E3;
+    cursor: pointer;
 }
 
 .header__profile button:hover,
@@ -293,9 +293,9 @@ button:hover {
 }
 
 @media (max-width: 768px) {
-  .back-button {
-    height: 50px;
-    width: 50px;
+  .back-button, .header__profile {
+    height: 60px;
+    width: 60px;
   }
 
   .rules {
@@ -353,6 +353,11 @@ button:hover {
 }
 
 @media (max-width: 480px) {
+
+    .back-button, .header__profile {
+    height: 55px;
+    width: 55px;
+  }
 
   .main__buttons {
     display: flex;
