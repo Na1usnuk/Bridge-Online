@@ -1,6 +1,4 @@
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -28,15 +26,12 @@ header {
 
 /* Rating (праворуч зверху) */
 .rating {
-  background-color: rgba(27, 36, 50, 0.5);
-  /* Напівпрозорий чорний */
+  background-color: rgba(27, 36, 50, 0.5); /* Напівпрозорий чорний */
   margin: 1.25rem 1.5rem 0 0;
   padding: 0 10px 0 10px;
-  color: #ffffff;
-  /* Білий текст */
+  color: #ffffff; /* Білий текст */
   text-align: center;
-  margin-bottom: 20px;
-  /* Відступ від ігрового поля */
+  margin-bottom: 20px; /* Відступ від ігрового поля */
   z-index: 1;
 }
 
@@ -57,11 +52,7 @@ header {
 .game-field {
   width: 70%;
   margin: 0 0.25rem;
-  background-color: rgba(32,
-      52,
-      43,
-      1);
-  /* Темніший зелений для ігрового поля */
+  background-color: rgba(32, 52, 43, 1); /* Темніший зелений для ігрового поля */
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -80,26 +71,21 @@ header {
   width: 100%;
 }
 
-.left-player,
-.right-player {
+.left-player, .right-player {
   display: flex;
   align-items: center;
   margin: 1.25rem;
 }
 
 .left-player {
-  margin-right: auto;
-  /* Лівий гравець зліва */
+  margin-right: auto; /* Лівий гравець зліва */
 }
 
 .right-player {
-  margin-left: auto;
-  /* Правий гравець справа */
+  margin-left: auto; /* Правий гравець справа */
 }
 
-.top-player .player-card,
-.left-player .player-card,
-.right-player .player-card {
+.top-player .player-card, .left-player .player-card, .right-player .player-card {
   --width: clamp(5.2em, 12.6vw, 8em);
   --height: calc(var(--width) * 1.4);
   width: var(--width);
@@ -115,9 +101,13 @@ header {
   border-radius: 0.3em;
   padding: 4.8rem 3.7rem;
 }
+/* 
+#heap {
+  margin-left: 0rem;
+} */
 
 #heap_card {
-  margin-left: -5.5rem;
+ margin-left: -4.7rem;
 }
 
 /* Center Area (Vertical Sections) */
@@ -127,7 +117,7 @@ header {
 }
 
 .deck {
-  margin: 1rem 0;
+  margin: 1rem 1rem 0 0;
   border: solid black 0.5rem;
 }
 
@@ -144,7 +134,6 @@ header {
 /* Horizontal Row */
 .horizontal-row {
   display: flex;
-  flex-direction: row-reverse;
   justify-content: center;
   position: relative;
   top: 2.5rem;
@@ -153,7 +142,7 @@ header {
 }
 
 #player_cards .card {
-  margin-left: -1.3rem;
+  margin-left: -1.6rem ;
 }
 
 .horizontal-row .rectangle {
@@ -161,6 +150,23 @@ header {
   height: 12rem;
   background-color: rgba(245, 241, 227, 1);
   border: 1px solid rgba(124, 137, 156, 1);
+}
+
+.card {
+  --width: clamp(5.2em, 10.5vw, 6em);
+  --height: calc(var(--width) * 1.5);
+  width: var(--width);
+  height: var(--height);
+  background-color: rgba(245, 241, 227, 1);
+  border: 1px solid black;
+  border-radius: 0.3em;
+  padding: 1.2em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  position: relative;
+  align-items: center;
+  font-size: clamp(0.84rem, 1.8vw, 1.2rem);
 }
 
 .suit-popup {
@@ -201,7 +207,7 @@ header {
 }
 
 .history-button.left {
-  left: 20px;
+  left: 4px;
   font-family: "Press Start 2P", system-ui;
   font-size: 0.7rem;
 }
@@ -209,7 +215,7 @@ header {
 .game-history {
   position: fixed;
   max-width: 40%;
-  left: 20px;
+  left: 4px;
   bottom: 60px;
   background-color: rgba(255, 255, 255, 0.9);
   border: 1px solid #ccc;
@@ -286,19 +292,19 @@ header {
 }
 
 [data-suit="heart"] .pip {
-  background-image: url("/static/assets/images/heart.svg");
+  background-image: url("assets/images/heart.svg");
 }
 
 [data-suit="diamond"] .pip {
-  background-image: url("/static/assets/images/diamond.svg");
+  background-image: url("assets/images/diamond.svg");
 }
 
 [data-suit="spade"] .pip {
-  background-image: url("/static/assets/images/spade.svg");
+  background-image: url("assets/images/spade.svg");
 }
 
 [data-suit="club"] .pip {
-  background-image: url("/static/assets/images/club.svg");
+  background-image: url("assets/images/club.svg");
 }
 
 .corner-number {
@@ -333,22 +339,22 @@ header {
 }
 
 [data-suit="heart"] .corner-number::after {
-  background-image: url("/static/assets/images/heart.svg");
+  background-image: url("assets/images/heart.svg");
   content: "";
 }
 
 [data-suit="spade"] .corner-number::after {
-  background-image: url("/static/assets/images/spade.svg");
+  background-image: url("assets/images/spade.svg");
   content: "";
 }
 
 [data-suit="club"] .corner-number::after {
-  background-image: url("/static/assets/images/club.svg");
+  background-image: url("assets/images/club.svg");
   content: "";
 }
 
 [data-suit="diamond"] .corner-number::after {
-  background-image: url("/static/assets/images/diamond.svg");
+  background-image: url("assets/images/diamond.svg");
   content: "";
 }
 
@@ -600,8 +606,6 @@ header {
   grid-column-start: 2;
 }
 
-
-
 [data-value="10"] .pip:first-child {
   grid-row-start: 1;
   grid-column-start: 1;
@@ -663,13 +667,19 @@ header {
   z-index: 10;
 }
 
-
 @media (min-width: 1200px) {
+
   .top-player .player-card,
   .left-player .player-card,
   .right-player .player-card {
     --width: 8rem;
+  }
+
+  #heap_card {
+ margin-left: -5.5rem;
 }
+
+  
 }
 
 /* Адаптивність */
@@ -683,15 +693,18 @@ header {
     border: 1px solid black;
     font-size: 0.6rem;
     border-radius: 0.3em;
-    /* трохи збільшимо */
     padding: 1.2em;
-    /* +20% */
   }
 
   .center-area .vertical-section {
-    width: 7rem;
-    height: 10rem;
+    width: 4.8rem;
+    height: 7rem;
   }
+
+
+  #heap_card {
+ margin-left: -3.5rem;
+}
 
   .left-player,
   .right-player {
@@ -706,7 +719,6 @@ header {
     max-width: 65%;
   }
 
-  .center-area .vertical-section,
   .horizontal-row .rectangle {
     width: 5rem;
     height: 7rem;
@@ -728,14 +740,18 @@ header {
 
   .game-history {
     position: fixed;
-    max-width: 40%;
-    bottom: 5px;
-
+    max-width: 50%;
   }
 
   .game-history p {
     margin: 0.2rem 0;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
+  }
+
+  .history-button.left {
+    font-size: 0.6rem;
+    padding: 3px 4px;
+    margin-left: 2px;
   }
 }
 
@@ -753,6 +769,11 @@ header {
     width: 3.65rem;
     height: 5.3rem;
   }
+
+
+  #heap_card {
+ margin-left: -2.5rem;
+}
 
   .left-player,
   .right-player {
@@ -780,5 +801,19 @@ header {
 
   .deck button {
     font-size: 0.45rem;
+  }
+  .deck {
+    margin-left: -1rem;
+    margin-right: 0.4rem;
+  }
+
+  .game-history p {
+    margin: 0.2rem 0;
+    font-size: 0.5rem;
+  }
+
+  .history-button.left {
+    font-size: 0.5rem;
+    padding: 2px 3px;
   }
 }
